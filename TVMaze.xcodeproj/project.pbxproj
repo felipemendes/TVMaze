@@ -14,12 +14,12 @@
 		0249E7902BB1FBEF00BBC79B /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E78F2BB1FBEF00BBC79B /* Color+Extensions.swift */; };
 		0249E7942BB1FCCF00BBC79B /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E7932BB1FCCF00BBC79B /* ColorTheme.swift */; };
 		0249E7A62BB20F0900BBC79B /* TVMazeServiceKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0249E7A52BB20F0900BBC79B /* TVMazeServiceKit */; };
-		0249E7AD2BB2158900BBC79B /* ShowRemoteDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E7A72BB2158900BBC79B /* ShowRemoteDataService.swift */; };
+		0249E7AD2BB2158900BBC79B /* ShowsRemoteDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E7A72BB2158900BBC79B /* ShowsRemoteDataService.swift */; };
 		0249E7AE2BB2158900BBC79B /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E7A92BB2158900BBC79B /* Image.swift */; };
 		0249E7AF2BB2158900BBC79B /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E7AA2BB2158900BBC79B /* Schedule.swift */; };
 		0249E7B02BB2158900BBC79B /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E7AB2BB2158900BBC79B /* Show.swift */; };
 		0249E7B22BB21A8100BBC79B /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E7B12BB21A8100BBC79B /* Environment.swift */; };
-		0249E7C42BB21D8000BBC79B /* ShowRemoteDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E7C32BB21D8000BBC79B /* ShowRemoteDataServiceTests.swift */; };
+		0249E7C42BB21D8000BBC79B /* ShowsRemoteDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E7C32BB21D8000BBC79B /* ShowsRemoteDataServiceTests.swift */; };
 		0249E7CA2BB21E7100BBC79B /* MockNetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E7C92BB21E7100BBC79B /* MockNetworkingManager.swift */; };
 		0249E7CC2BB21EE100BBC79B /* MockShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E7CB2BB21EE100BBC79B /* MockShow.swift */; };
 /* End PBXBuildFile section */
@@ -43,13 +43,13 @@
 		0249E78F2BB1FBEF00BBC79B /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		0249E7932BB1FCCF00BBC79B /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
 		0249E79C2BB201C700BBC79B /* TVMazeServiceKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = TVMazeServiceKit; path = TVMaze/TVMazeServiceKit; sourceTree = "<group>"; };
-		0249E7A72BB2158900BBC79B /* ShowRemoteDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowRemoteDataService.swift; sourceTree = "<group>"; };
+		0249E7A72BB2158900BBC79B /* ShowsRemoteDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowsRemoteDataService.swift; sourceTree = "<group>"; };
 		0249E7A92BB2158900BBC79B /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		0249E7AA2BB2158900BBC79B /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		0249E7AB2BB2158900BBC79B /* Show.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		0249E7B12BB21A8100BBC79B /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		0249E7B72BB21D4200BBC79B /* TVMazeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TVMazeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0249E7C32BB21D8000BBC79B /* ShowRemoteDataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRemoteDataServiceTests.swift; sourceTree = "<group>"; };
+		0249E7C32BB21D8000BBC79B /* ShowsRemoteDataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsRemoteDataServiceTests.swift; sourceTree = "<group>"; };
 		0249E7C92BB21E7100BBC79B /* MockNetworkingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetworkingManager.swift; sourceTree = "<group>"; };
 		0249E7CB2BB21EE100BBC79B /* MockShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockShow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,6 +102,7 @@
 				0249E7922BB1FCC100BBC79B /* Helpers */,
 				0249E7AC2BB2158900BBC79B /* Models */,
 				0249E7A82BB2158900BBC79B /* Services */,
+				0249E7CD2BB2245A00BBC79B /* Features */,
 				0249E7912BB1FC3600BBC79B /* Resources */,
 				0249E7802BB1F71A00BBC79B /* Preview Content */,
 			);
@@ -151,7 +152,7 @@
 		0249E7A82BB2158900BBC79B /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				0249E7A72BB2158900BBC79B /* ShowRemoteDataService.swift */,
+				0249E7A72BB2158900BBC79B /* ShowsRemoteDataService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -178,7 +179,7 @@
 		0249E7C02BB21D5500BBC79B /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				0249E7C32BB21D8000BBC79B /* ShowRemoteDataServiceTests.swift */,
+				0249E7C32BB21D8000BBC79B /* ShowsRemoteDataServiceTests.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -190,6 +191,37 @@
 				0249E7C92BB21E7100BBC79B /* MockNetworkingManager.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		0249E7CD2BB2245A00BBC79B /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				0249E7CE2BB2247200BBC79B /* Shows */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		0249E7CE2BB2247200BBC79B /* Shows */ = {
+			isa = PBXGroup;
+			children = (
+				0249E7CF2BB2248A00BBC79B /* ViewModels */,
+				0249E7D02BB2249400BBC79B /* Views */,
+			);
+			path = Shows;
+			sourceTree = "<group>";
+		};
+		0249E7CF2BB2248A00BBC79B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		0249E7D02BB2249400BBC79B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,7 +334,7 @@
 				0249E7942BB1FCCF00BBC79B /* ColorTheme.swift in Sources */,
 				0249E77B2BB1F71800BBC79B /* TVMazeApp.swift in Sources */,
 				0249E7B22BB21A8100BBC79B /* Environment.swift in Sources */,
-				0249E7AD2BB2158900BBC79B /* ShowRemoteDataService.swift in Sources */,
+				0249E7AD2BB2158900BBC79B /* ShowsRemoteDataService.swift in Sources */,
 				0249E7AF2BB2158900BBC79B /* Schedule.swift in Sources */,
 				0249E7B02BB2158900BBC79B /* Show.swift in Sources */,
 				0249E7902BB1FBEF00BBC79B /* Color+Extensions.swift in Sources */,
@@ -314,7 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0249E7CC2BB21EE100BBC79B /* MockShow.swift in Sources */,
-				0249E7C42BB21D8000BBC79B /* ShowRemoteDataServiceTests.swift in Sources */,
+				0249E7C42BB21D8000BBC79B /* ShowsRemoteDataServiceTests.swift in Sources */,
 				0249E7CA2BB21E7100BBC79B /* MockNetworkingManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

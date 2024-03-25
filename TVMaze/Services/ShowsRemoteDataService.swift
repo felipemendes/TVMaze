@@ -1,5 +1,5 @@
 //
-//  ShowRemoteDataService.swift
+//  ShowsRemoteDataService.swift
 //  TVMaze
 //
 //  Created by Felipe Mendes on 25/03/24.
@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import TVMazeServiceKit
 
-protocol ShowRemoteDataServiceProtocol {
+protocol ShowsRemoteDataServiceProtocol {
     var showsPublisher: [Show] { get }
     var showSubscription: AnyCancellable? { get }
     var showsURL: URL { get }
@@ -17,7 +17,7 @@ protocol ShowRemoteDataServiceProtocol {
     func fetchShows()
 }
 
-final class ShowRemoteDataService: ShowRemoteDataServiceProtocol {
+final class ShowsRemoteDataService: ShowsRemoteDataServiceProtocol {
 
     // MARK: - Initializer
 

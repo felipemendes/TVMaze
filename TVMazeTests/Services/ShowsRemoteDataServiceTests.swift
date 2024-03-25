@@ -1,5 +1,5 @@
 //
-//  ShowRemoteDataServiceTests.swift
+//  ShowsRemoteDataServiceTests.swift
 //  TVMazeTests
 //
 //  Created by Felipe Mendes on 25/03/24.
@@ -9,21 +9,21 @@ import XCTest
 import Combine
 @testable import TVMaze
 
-final class ShowRemoteDataServiceTests: XCTestCase {
+final class ShowsRemoteDataServiceTests: XCTestCase {
     var mockNetworkingManager: MockNetworkingManager!
-    var showRemoteDataService: ShowRemoteDataService!
+    var showsRemoteDataService: ShowsRemoteDataService!
     var cancellables: Set<AnyCancellable>!
 
     override func setUp() {
         super.setUp()
         mockNetworkingManager = MockNetworkingManager()
-        showRemoteDataService = ShowRemoteDataService(networkingManager: mockNetworkingManager)
+        showsRemoteDataService = ShowsRemoteDataService(networkingManager: mockNetworkingManager)
         cancellables = []
     }
 
     override func tearDown() {
         mockNetworkingManager = nil
-        showRemoteDataService = nil
+        showsRemoteDataService = nil
         cancellables = nil
         super.tearDown()
     }
@@ -31,7 +31,7 @@ final class ShowRemoteDataServiceTests: XCTestCase {
     func test_fetchShowsUsesCorrectURL() {
         // Given
         let expectedURL = URL(string: "https://mock.shows.url")!
-        let service = ShowRemoteDataService(networkingManager: mockNetworkingManager, showsURL: expectedURL)
+        let service = ShowsRemoteDataService(networkingManager: mockNetworkingManager, showsURL: expectedURL)
 
         // When
         service.fetchShows()
@@ -51,10 +51,10 @@ final class ShowRemoteDataServiceTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Fetch shows succeeds and publishes shows")
 
         // When
-        showRemoteDataService.fetchShows()
+        showsRemoteDataService.fetchShows()
 
         // Then
-        showRemoteDataService.$showsPublisher
+        showsRemoteDataService.$showsPublisher
             .sink(receiveValue: { shows in
                 XCTAssertEqual(shows.count, mockShows.count, "Fetched shows count should match mock shows count")
                 XCTAssertEqual(shows.first?.name, mockShows.first?.name, "Fetched show name should match mock show name")
