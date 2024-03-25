@@ -11,19 +11,21 @@ import Combine
 
 final class ShowsRemoteDataServiceTests: XCTestCase {
     var mockNetworkingManager: MockNetworkingManager!
-    var showsRemoteDataService: ShowsRemoteDataService!
+    var sut: ShowsRemoteDataService!
     var cancellables: Set<AnyCancellable>!
 
     override func setUp() {
         super.setUp()
         mockNetworkingManager = MockNetworkingManager()
-        showsRemoteDataService = ShowsRemoteDataService(networkingManager: mockNetworkingManager)
+        sut = ShowsRemoteDataService(
+            networkingManager: mockNetworkingManager,
+            showsURL: URL(string: "https://mock.shows.url")!)
         cancellables = []
     }
 
     override func tearDown() {
         mockNetworkingManager = nil
-        showsRemoteDataService = nil
+        sut = nil
         cancellables = nil
         super.tearDown()
     }
@@ -31,10 +33,10 @@ final class ShowsRemoteDataServiceTests: XCTestCase {
     func test_fetchShowsUsesCorrectURL() {
         // Given
         let expectedURL = URL(string: "https://mock.shows.url")!
-        let service = ShowsRemoteDataService(networkingManager: mockNetworkingManager, showsURL: expectedURL)
+        let sut = ShowsRemoteDataService(networkingManager: mockNetworkingManager, showsURL: expectedURL)
 
         // When
-        service.fetchShows()
+        sut.fetchShows()
 
         // Then
         XCTAssertEqual(mockNetworkingManager.lastUsedURL, expectedURL)
@@ -51,10 +53,10 @@ final class ShowsRemoteDataServiceTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Fetch shows succeeds and publishes shows")
 
         // When
-        showsRemoteDataService.fetchShows()
+        sut.fetchShows()
 
         // Then
-        showsRemoteDataService.$showsPublisher
+        sut.$showsPublisher
             .sink(receiveValue: { shows in
                 XCTAssertEqual(shows.count, mockShows.count, "Fetched shows count should match mock shows count")
                 XCTAssertEqual(shows.first?.name, mockShows.first?.name, "Fetched show name should match mock show name")

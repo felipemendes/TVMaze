@@ -29,14 +29,12 @@ final class ShowsRemoteDataService: ShowsRemoteDataServiceProtocol {
         self.showsURL = showsURL
     }
 
-    convenience init?(
-        networkingManager: NetworkingManagerProtocol
-    ) {
+    convenience init?() {
         guard let url = Environment.showsURL else {
             return nil
         }
 
-        self.init(networkingManager: networkingManager, showsURL: url)
+        self.init(networkingManager: NetworkingManager(), showsURL: url)
     }
 
     // MARK: - Public API

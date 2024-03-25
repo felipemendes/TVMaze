@@ -12,7 +12,7 @@ import Combine
 
 final class NetworkingManagerTests: XCTestCase {
 
-    var networkingManager: NetworkingManager!
+    var sut: NetworkingManager!
     var subscriptions = Set<AnyCancellable>()
 
     override func setUp() {
@@ -22,7 +22,7 @@ final class NetworkingManagerTests: XCTestCase {
         configuration.protocolClasses = [MockURLProtocol.self]
 
         let session = URLSession(configuration: configuration)
-        networkingManager = NetworkingManager(session: session)
+        sut = NetworkingManager(session: session)
     }
 
     override func tearDown() {
@@ -40,7 +40,7 @@ final class NetworkingManagerTests: XCTestCase {
         }
 
         // When
-        networkingManager.download(url: URL(string: "https://example.com")!)
+        sut.download(url: URL(string: "https://example.com")!)
             .sink(receiveCompletion: { _ in }, receiveValue: { data in
 
                 // Then
@@ -61,7 +61,7 @@ final class NetworkingManagerTests: XCTestCase {
         }
 
         // When
-        networkingManager.download(url: URL(string: "https://example.com")!)
+        sut.download(url: URL(string: "https://example.com")!)
             .sink(receiveCompletion: { completion in
 
                 // Then
