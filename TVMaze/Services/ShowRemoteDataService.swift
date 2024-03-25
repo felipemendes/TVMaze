@@ -17,7 +17,7 @@ protocol ShowRemoteDataServiceProtocol {
     func fetchShows()
 }
 
-class ShowRemoteDataService: ShowRemoteDataServiceProtocol {
+final class ShowRemoteDataService: ShowRemoteDataServiceProtocol {
 
     // MARK: - Initializer
 

@@ -13,7 +13,7 @@ public protocol NetworkingManagerProtocol {
     func handleCompletion(completion: Subscribers.Completion<Error>)
 }
 
-public class NetworkingManager: NetworkingManagerProtocol {
+public final class NetworkingManager: NetworkingManagerProtocol {
 
     // MARK: - Initializer
 
