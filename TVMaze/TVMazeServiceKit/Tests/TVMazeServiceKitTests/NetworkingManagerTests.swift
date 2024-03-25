@@ -10,7 +10,7 @@ import Combine
 
 @testable import TVMazeServiceKit
 
-class NetworkingManagerTests: XCTestCase {
+final class NetworkingManagerTests: XCTestCase {
 
     var networkingManager: NetworkingManager!
     var subscriptions = Set<AnyCancellable>()

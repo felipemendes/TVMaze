@@ -19,7 +19,20 @@
 		0249E7AF2BB2158900BBC79B /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E7AA2BB2158900BBC79B /* Schedule.swift */; };
 		0249E7B02BB2158900BBC79B /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E7AB2BB2158900BBC79B /* Show.swift */; };
 		0249E7B22BB21A8100BBC79B /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E7B12BB21A8100BBC79B /* Environment.swift */; };
+		0249E7C42BB21D8000BBC79B /* ShowRemoteDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E7C32BB21D8000BBC79B /* ShowRemoteDataServiceTests.swift */; };
+		0249E7CA2BB21E7100BBC79B /* MockNetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E7C92BB21E7100BBC79B /* MockNetworkingManager.swift */; };
+		0249E7CC2BB21EE100BBC79B /* MockShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E7CB2BB21EE100BBC79B /* MockShow.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0249E7BB2BB21D4200BBC79B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0249E76F2BB1F71800BBC79B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0249E7762BB1F71800BBC79B;
+			remoteInfo = TVMaze;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0249E7772BB1F71800BBC79B /* TVMaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TVMaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,6 +48,10 @@
 		0249E7AA2BB2158900BBC79B /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		0249E7AB2BB2158900BBC79B /* Show.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		0249E7B12BB21A8100BBC79B /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		0249E7B72BB21D4200BBC79B /* TVMazeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TVMazeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0249E7C32BB21D8000BBC79B /* ShowRemoteDataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRemoteDataServiceTests.swift; sourceTree = "<group>"; };
+		0249E7C92BB21E7100BBC79B /* MockNetworkingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetworkingManager.swift; sourceTree = "<group>"; };
+		0249E7CB2BB21EE100BBC79B /* MockShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockShow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +63,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0249E7B42BB21D4200BBC79B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -54,6 +78,7 @@
 			children = (
 				0249E79C2BB201C700BBC79B /* TVMazeServiceKit */,
 				0249E7792BB1F71800BBC79B /* TVMaze */,
+				0249E7B82BB21D4200BBC79B /* TVMazeTests */,
 				0249E7782BB1F71800BBC79B /* Products */,
 				0249E7A42BB20F0900BBC79B /* Frameworks */,
 			);
@@ -63,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				0249E7772BB1F71800BBC79B /* TVMaze.app */,
+				0249E7B72BB21D4200BBC79B /* TVMazeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -140,6 +166,32 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		0249E7B82BB21D4200BBC79B /* TVMazeTests */ = {
+			isa = PBXGroup;
+			children = (
+				0249E7C82BB21E6A00BBC79B /* Mocks */,
+				0249E7C02BB21D5500BBC79B /* Services */,
+			);
+			path = TVMazeTests;
+			sourceTree = "<group>";
+		};
+		0249E7C02BB21D5500BBC79B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0249E7C32BB21D8000BBC79B /* ShowRemoteDataServiceTests.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		0249E7C82BB21E6A00BBC79B /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				0249E7CB2BB21EE100BBC79B /* MockShow.swift */,
+				0249E7C92BB21E7100BBC79B /* MockNetworkingManager.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -164,6 +216,24 @@
 			productReference = 0249E7772BB1F71800BBC79B /* TVMaze.app */;
 			productType = "com.apple.product-type.application";
 		};
+		0249E7B62BB21D4200BBC79B /* TVMazeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0249E7BD2BB21D4200BBC79B /* Build configuration list for PBXNativeTarget "TVMazeTests" */;
+			buildPhases = (
+				0249E7B32BB21D4200BBC79B /* Sources */,
+				0249E7B42BB21D4200BBC79B /* Frameworks */,
+				0249E7B52BB21D4200BBC79B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0249E7BC2BB21D4200BBC79B /* PBXTargetDependency */,
+			);
+			name = TVMazeTests;
+			productName = TVMazeTests;
+			productReference = 0249E7B72BB21D4200BBC79B /* TVMazeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -176,6 +246,11 @@
 				TargetAttributes = {
 					0249E7762BB1F71800BBC79B = {
 						CreatedOnToolsVersion = 15.3;
+					};
+					0249E7B62BB21D4200BBC79B = {
+						CreatedOnToolsVersion = 15.3;
+						LastSwiftMigration = 1530;
+						TestTargetID = 0249E7762BB1F71800BBC79B;
 					};
 				};
 			};
@@ -193,6 +268,7 @@
 			projectRoot = "";
 			targets = (
 				0249E7762BB1F71800BBC79B /* TVMaze */,
+				0249E7B62BB21D4200BBC79B /* TVMazeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -204,6 +280,13 @@
 			files = (
 				0249E7822BB1F71A00BBC79B /* Preview Assets.xcassets in Resources */,
 				0249E77F2BB1F71A00BBC79B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0249E7B52BB21D4200BBC79B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,12 +309,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0249E7B32BB21D4200BBC79B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0249E7CC2BB21EE100BBC79B /* MockShow.swift in Sources */,
+				0249E7C42BB21D8000BBC79B /* ShowRemoteDataServiceTests.swift in Sources */,
+				0249E7CA2BB21E7100BBC79B /* MockNetworkingManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		0249E7A32BB20C2500BBC79B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 0249E7A22BB20C2500BBC79B /* TVMazeServiceKit */;
+		};
+		0249E7BC2BB21D4200BBC79B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0249E7762BB1F71800BBC79B /* TVMaze */;
+			targetProxy = 0249E7BB2BB21D4200BBC79B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -425,6 +523,47 @@
 			};
 			name = Release;
 		};
+		0249E7BE2BB21D4200BBC79B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7G64V5XZM3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.felipemendes.TVMazeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TVMaze.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TVMaze";
+			};
+			name = Debug;
+		};
+		0249E7BF2BB21D4200BBC79B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7G64V5XZM3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.felipemendes.TVMazeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TVMaze.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TVMaze";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -442,6 +581,15 @@
 			buildConfigurations = (
 				0249E7862BB1F71A00BBC79B /* Debug */,
 				0249E7872BB1F71A00BBC79B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0249E7BD2BB21D4200BBC79B /* Build configuration list for PBXNativeTarget "TVMazeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0249E7BE2BB21D4200BBC79B /* Debug */,
+				0249E7BF2BB21D4200BBC79B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
