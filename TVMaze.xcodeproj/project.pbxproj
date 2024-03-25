@@ -13,6 +13,7 @@
 		0249E7822BB1F71A00BBC79B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0249E7812BB1F71A00BBC79B /* Preview Assets.xcassets */; };
 		0249E7902BB1FBEF00BBC79B /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E78F2BB1FBEF00BBC79B /* Color+Extensions.swift */; };
 		0249E7942BB1FCCF00BBC79B /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E7932BB1FCCF00BBC79B /* ColorTheme.swift */; };
+		0249E7A62BB20F0900BBC79B /* TVMazeServiceKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0249E7A52BB20F0900BBC79B /* TVMazeServiceKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		0249E7812BB1F71A00BBC79B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0249E78F2BB1FBEF00BBC79B /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		0249E7932BB1FCCF00BBC79B /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
+		0249E79C2BB201C700BBC79B /* TVMazeServiceKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = TVMazeServiceKit; path = TVMaze/TVMazeServiceKit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0249E7A62BB20F0900BBC79B /* TVMazeServiceKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -39,8 +42,10 @@
 		0249E76E2BB1F71800BBC79B = {
 			isa = PBXGroup;
 			children = (
+				0249E79C2BB201C700BBC79B /* TVMazeServiceKit */,
 				0249E7792BB1F71800BBC79B /* TVMaze */,
 				0249E7782BB1F71800BBC79B /* Products */,
+				0249E7A42BB20F0900BBC79B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +102,13 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		0249E7A42BB20F0900BBC79B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -111,8 +123,12 @@
 			buildRules = (
 			);
 			dependencies = (
+				0249E7A32BB20C2500BBC79B /* PBXTargetDependency */,
 			);
 			name = TVMaze;
+			packageProductDependencies = (
+				0249E7A52BB20F0900BBC79B /* TVMazeServiceKit */,
+			);
 			productName = TVMaze;
 			productReference = 0249E7772BB1F71800BBC79B /* TVMaze.app */;
 			productType = "com.apple.product-type.application";
@@ -176,6 +192,13 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		0249E7A32BB20C2500BBC79B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 0249E7A22BB20C2500BBC79B /* TVMazeServiceKit */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
 		0249E7832BB1F71A00BBC79B /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -229,7 +252,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -286,7 +309,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -306,6 +329,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"TVMaze/Preview Content\"";
 				DEVELOPMENT_TEAM = 7G64V5XZM3;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = TVmaze;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -340,6 +364,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"TVMaze/Preview Content\"";
 				DEVELOPMENT_TEAM = 7G64V5XZM3;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = TVmaze;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -386,6 +411,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0249E7A22BB20C2500BBC79B /* TVMazeServiceKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TVMazeServiceKit;
+		};
+		0249E7A52BB20F0900BBC79B /* TVMazeServiceKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TVMazeServiceKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0249E76F2BB1F71800BBC79B /* Project object */;
 }
