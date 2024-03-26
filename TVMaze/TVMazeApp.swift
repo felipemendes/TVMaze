@@ -11,7 +11,7 @@ import TVMazeServiceKit
 @main
 struct TVMazeApp: App {
 
-    @StateObject private var showsViewModel: ShowsViewModel
+    let viewModelFactory = ViewModelFactory()
 
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [
@@ -21,17 +21,14 @@ struct TVMazeApp: App {
         UINavigationBar.appearance().titleTextAttributes = [
             .foregroundColor: UIColor(Color.theme.accent)
         ]
-
-        let showDataService = ShowsRemoteDataService()
-        _showsViewModel = StateObject(wrappedValue: ShowsViewModel(showDataService: showDataService))
     }
     
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                ShowsView()
+                ShowsView(viewModel: viewModelFactory.makeShowsViewModel())
             }
         }
-        .environmentObject(showsViewModel)
+        .environmentObject(viewModelFactory)
     }
 }
