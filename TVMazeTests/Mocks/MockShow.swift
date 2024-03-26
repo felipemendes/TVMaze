@@ -25,9 +25,9 @@ final class MockShow {
             time: "20:00",
             days: ["Mock Day 1"]
         ),
-        image: Image(
-            medium: "https://www.testshow.com/image_medium.jpg",
-            original: "https://www.testshow.com/image_original.jpg"
+        image: ShowImage(
+            medium: "https://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg",
+            original: "https://static.tvmaze.com/uploads/images/original_untouched/81/202627.jpg"
         ),
         summary: "Mock Summary 1"
     )
@@ -40,9 +40,9 @@ final class MockShow {
             time: "21:00",
             days: ["Mock Day 2"]
         ),
-        image: Image(
-            medium: "https://www.testshow.com/image_medium.jpg",
-            original: "https://www.testshow.com/image_original.jpg"
+        image: ShowImage(
+            medium: "https://static.tvmaze.com/uploads/images/medium_portrait/163/407679.jpg",
+            original: "https://static.tvmaze.com/uploads/images/original_untouched/163/407679.jpg"
         ),
         summary: "Mock Summary 2"
     )

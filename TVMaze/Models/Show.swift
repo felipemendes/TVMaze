@@ -12,6 +12,6 @@ struct Show: Identifiable, Codable {
     let name: String?
     let genres: [String]?
     let schedule: Schedule?
-    let image: Image?
+    let image: ShowImage?
     let summary: String?
 }
