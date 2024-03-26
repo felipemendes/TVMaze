@@ -11,26 +11,43 @@ import TVMazeServiceKit
 
 protocol ShowsViewModelProtocol {
     var allShows: [Show] { get }
+    var state: ViewState { get }
+
+    func reloadData()
 }
 
 final class ShowsViewModel: ObservableObject {
 
+    // MARK: - Initializer
+
+    init(showDataService: ShowsRemoteDataService) {
+        self.showDataService = showDataService
+        addSubscribers()
+
+        reloadData()
+    }
+
+    // MARK: - Public API
+
     @Published var allShows: [Show] = []
+    @Published var state: ViewState = .loading
+
+    func reloadData() {
+        state = .loading
+        showDataService.fetchShows()
+    }
+
+    // MARK: - Private
 
     private let showDataService: ShowsRemoteDataService
     private var cancellables = Set<AnyCancellable>()
 
-    init(showDataService: ShowsRemoteDataService) {
-        self.showDataService = showDataService
-
-        addSubscribers()
-        showDataService.fetchShows()
-    }
-
     private func addSubscribers() {
         showDataService.$showsPublisher
-            .sink { response in
+            .sink { [weak self] response in
+                guard let self else { return }
                 self.allShows = response
+                self.state = .content
             }
             .store(in: &cancellables)
     }

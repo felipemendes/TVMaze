@@ -76,11 +76,18 @@ extension ShowRowView {
 
             if let genres = show.genres {
                 HStack {
-                    ForEach(Array(genres.enumerated()), id: \.offset) { _, genre in
-                        Text(genre)
-                            .font(.caption)
-                            .foregroundStyle(Color.theme.secondaryText)
-                            .lineLimit(1)
+                    ForEach(Array(genres.enumerated()), id: \.offset) { index, genre in
+                        HStack {
+                            Text(genre)
+                                .font(.caption)
+                                .foregroundStyle(Color.theme.secondaryText)
+                                .lineLimit(1)
+
+                            if index < genres.count - 1 {
+                                Text("•")
+                                    .font(.caption)
+                            }
+                        }
                     }
                     Spacer()
                 }
@@ -92,7 +99,7 @@ extension ShowRowView {
             Text((show.summary ?? "").strippingHTML)
                 .font(.subheadline)
                 .multilineTextAlignment(.leading)
-                .lineLimit(2)
+                .lineLimit(3)
                 .foregroundStyle(Color.theme.secondaryText)
         }
     }
@@ -102,7 +109,7 @@ extension ShowRowView {
     ShowRowView(show: Show(
         id: 1,
         name: "Mock Show 1",
-        genres: ["Comedy", "Drama", "Mock 1", "Mock 2"],
+        genres: ["Comedy", "Drama"],
         schedule: Schedule(
             time: "20:00",
             days: ["Mock Day 1"]
