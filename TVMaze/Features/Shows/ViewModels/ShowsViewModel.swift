@@ -22,8 +22,8 @@ final class ShowsViewModel: ObservableObject, ShowsViewModelProtocol {
 
     init(showDataService: ShowsRemoteDataService) {
         self.showDataService = showDataService
-        addSubscribers()
 
+        addSubscribers()
         reloadData()
     }
 

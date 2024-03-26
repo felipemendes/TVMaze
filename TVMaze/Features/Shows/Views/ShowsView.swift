@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct ShowsView: View {
-    @EnvironmentObject private var viewModel: ShowsViewModel
+    @ObservedObject var viewModel: ShowsViewModel
+    @EnvironmentObject var viewModelFactory: ViewModelFactory
+
+    @State private var selectedShow: Show? = nil
+    @State private var showDetailView: Bool = false
 
     var body: some View {
 
@@ -20,17 +24,6 @@ struct ShowsView: View {
         case let .error(errorMessage):
             Text(errorMessage)
         }
-    }
-}
-
-// MARK: - Loading
-
-extension ShowsView {
-    private var loadingView: some View {
-        ProgressView()
-            .progressViewStyle(
-                CircularProgressViewStyle(tint: Color.theme.accent))
-            .scaleEffect(2)
     }
 }
 
@@ -46,10 +39,16 @@ extension ShowsView {
                 ForEach(viewModel.allShows) { show in
                     ShowRowView(show: show)
                         .listRowInsets(EdgeInsets())
+                        .onTapGesture {
+                            segue(show: show)
+                        }
                 }
                 .listRowSeparator(.hidden)
             }
             .listStyle(.plain)
+            .refreshable {
+                viewModel.reloadData()
+            }
         }
         .navigationTitle("TV Shows")
         .toolbar {
@@ -58,12 +57,27 @@ extension ShowsView {
                     .foregroundStyle(Color.theme.accent)
             }
         }
+        .background(
+            NavigationLink(
+                destination: DetailsView(viewModel: viewModelFactory.makeDetailsViewModel(show: $selectedShow.wrappedValue))
+                    .environmentObject(viewModelFactory),
+                isActive: $showDetailView) {
+                    EmptyView()
+                }
+        )
+    }
+}
+
+extension ShowsView {
+    private func segue(show: Show) {
+        selectedShow = show
+        showDetailView.toggle()
     }
 }
 
 #Preview {
     NavigationView {
-        ShowsView()
+        ShowsView(viewModel: ViewModelFactory().makeShowsViewModel())
     }
-    .environmentObject(ShowsViewModel(showDataService: ShowsRemoteDataService()))
+    .environmentObject(ViewModelFactory())
 }
