@@ -23,17 +23,6 @@ struct Show: Identifiable, Codable {
     let image: ShowImage?
     let summary: String?
     let embedded: Embedded?
-
-    struct Embedded: Codable {
-        let episodes: [Episode]?
-
-        struct Episode: Codable {
-            let id: Int
-            let name: String?
-            let season, number: Int?
-            let image: ShowImage?
-        }
-    }
 }
 
 extension Show {

@@ -7,6 +7,8 @@
 
 import Foundation
 
-struct ShowImage: Codable {
-    let medium, original: String?
+extension Show {
+    struct ShowImage: Codable {
+        let medium, original: String?
+    }
 }

@@ -29,7 +29,8 @@ final class MockShow {
             medium: "https://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg",
             original: "https://static.tvmaze.com/uploads/images/original_untouched/81/202627.jpg"
         ),
-        summary: "Mock Summary 1"
+        summary: "Mock Summary 1",
+        embedded: nil
     )
 
     static let show2 = Show(
@@ -44,6 +45,7 @@ final class MockShow {
             medium: "https://static.tvmaze.com/uploads/images/medium_portrait/163/407679.jpg",
             original: "https://static.tvmaze.com/uploads/images/original_untouched/163/407679.jpg"
         ),
-        summary: "Mock Summary 2"
+        summary: "Mock Summary 2",
+        embedded: nil
     )
 }

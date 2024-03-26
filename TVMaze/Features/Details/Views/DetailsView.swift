@@ -44,11 +44,11 @@ extension DetailsView {
             id: 1,
             name: "Mock Show 1",
             genres: ["Comedy", "Drama"],
-            schedule: Schedule(
+            schedule: Show.Schedule(
                 time: "20:00",
                 days: ["Mock Day 1"]
             ),
-            image: ShowImage(
+            image: Show.ShowImage(
                 medium: "https://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg",
                 original: "https://static.tvmaze.com/uploads/images/original_untouched/81/202627.jpg"
             ),

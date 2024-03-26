@@ -35,6 +35,7 @@
 		0249E7FB2BB3011600BBC79B /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E7FA2BB3011600BBC79B /* DetailsView.swift */; };
 		0249E7FE2BB31C8300BBC79B /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E7FD2BB31C8300BBC79B /* ViewModelFactory.swift */; };
 		0249E8002BB324D700BBC79B /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E7FF2BB324D700BBC79B /* View+Extensions.swift */; };
+		0249E8022BB334B000BBC79B /* EmbeddedEpisodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E8012BB334B000BBC79B /* EmbeddedEpisodes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		0249E7FA2BB3011600BBC79B /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		0249E7FD2BB31C8300BBC79B /* ViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactory.swift; sourceTree = "<group>"; };
 		0249E7FF2BB324D700BBC79B /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		0249E8012BB334B000BBC79B /* EmbeddedEpisodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedEpisodes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 				0249E7AB2BB2158900BBC79B /* Show.swift */,
 				0249E7AA2BB2158900BBC79B /* Schedule.swift */,
 				0249E7A92BB2158900BBC79B /* ShowImage.swift */,
+				0249E8012BB334B000BBC79B /* EmbeddedEpisodes.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				0249E7D62BB22A5C00BBC79B /* ShowsView.swift in Sources */,
 				0249E7B22BB21A8100BBC79B /* Environment.swift in Sources */,
 				0249E7AD2BB2158900BBC79B /* ShowsRemoteDataService.swift in Sources */,
+				0249E8022BB334B000BBC79B /* EmbeddedEpisodes.swift in Sources */,
 				0249E7AF2BB2158900BBC79B /* Schedule.swift in Sources */,
 				0249E7B02BB2158900BBC79B /* Show.swift in Sources */,
 				0249E7FE2BB31C8300BBC79B /* ViewModelFactory.swift in Sources */,

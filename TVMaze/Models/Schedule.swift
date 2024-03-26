@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct Schedule: Codable {
-    let time: String?
-    let days: [String]?
+extension Show {
+    struct Schedule: Codable {
+        let time: String?
+        let days: [String]?
+    }
 }
