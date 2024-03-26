@@ -13,6 +13,7 @@ protocol TvShowDetailsViewModelProtocol {
     var tvShowDetailsDataService: TvShowDetailsRemoteDataService { get }
     var tvShow: TvShow? { get }
     var state: ViewState { get }
+    var episodesBySeason: [Int: [TvShow.Embedded.Episode]] { get }
 
     func reloadData()
 }
@@ -35,7 +36,9 @@ final class TvShowDetailsViewModel: ObservableObject, TvShowDetailsViewModelProt
 
     let tvShowDetailsDataService: TvShowDetailsRemoteDataService
     var tvShow: TvShow?
+
     @Published var state: ViewState = .loading
+    @Published var episodesBySeason: [Int: [TvShow.Embedded.Episode]] = [:]
 
     func reloadData() {
         state = .loading
@@ -48,17 +51,28 @@ final class TvShowDetailsViewModel: ObservableObject, TvShowDetailsViewModelProt
 
     private func addSubscribers() {
         tvShowDetailsDataService.$tvShowDetailsPublisher
+            .receive(on: RunLoop.main)
             .sink(receiveCompletion: { [weak self] completion in
                 switch completion {
                 case .finished: self?.state = .content
                 case let .failure(error): self?.state = .error(error.localizedDescription)
                 }
             }, receiveValue: { [weak self] response in
-                guard let self,
-                      let response else { return }
-                self.tvShow = response
-                self.state = .content
+                guard let self else { return }
+                self.groupEpisodesBySeason(tvShow: response)
             })
             .store(in: &cancellables)
+    }
+
+    private func groupEpisodesBySeason(tvShow: TvShow?) {
+        self.tvShow = tvShow
+
+        if let episodes = tvShow?.embedded?.episodes {
+            self.episodesBySeason = Dictionary(grouping: episodes) { $0.season ?? 0 }
+        } else {
+            self.episodesBySeason = [:]
+        }
+
+        self.state = .content
     }
 }

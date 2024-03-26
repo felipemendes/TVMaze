@@ -37,19 +37,20 @@ struct TvShowRowView: View {
 
 extension TvShowRowView {
     @ViewBuilder private var poster: some View {
-        ImageView(viewModel: viewModelFactory.makeImageViewModel(tvShow: tvShow))
-            .scaledToFit()
-            .foregroundStyle(Color.theme.secondaryText)
-            .padding()
-            .frame(
-                width: UIScreen.main.bounds.width / 3,
-                height: 150)
-            .shadow(
-                color: Color.black.opacity(0.3),
-                radius: 2,
-                x: 2,
-                y: 2
-            )
+        if let image = tvShow.image {
+            ImageView(viewModel: viewModelFactory.makeImageViewModel(tvShowImage: image, id: "\(tvShow.id)"))
+                .scaledToFit()
+                .padding()
+                .frame(
+                    width: UIScreen.main.bounds.width / 3,
+                    height: 150)
+                .shadow(
+                    color: Color.black.opacity(0.3),
+                    radius: 2,
+                    x: 2,
+                    y: 2
+                )
+        }
     }
 }
 

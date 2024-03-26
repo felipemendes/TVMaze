@@ -23,12 +23,13 @@ final class ImagesDataService: ImagesDataServiceProtocol {
     init(
         fileManager: LocalFileManagerProtocol,
         networkingManager: NetworkingManagerProtocol,
-        tvShow: TvShow
+        tvShowImage: TvShow.Image,
+        id: String
     ) {
         self.fileManager = fileManager
         self.networkingManager = networkingManager
-        self.tvShow = tvShow
-        self.imageName = "\(tvShow.id)"
+        self.tvShowImage = tvShowImage
+        self.imageName = "\(id)"
     }
 
     // MARK: - Public API
@@ -50,13 +51,13 @@ final class ImagesDataService: ImagesDataServiceProtocol {
 
     private let fileManager: LocalFileManagerProtocol
     private let networkingManager: NetworkingManagerProtocol
-    private var tvShow: TvShow
+    private var tvShowImage: TvShow.Image
 
     private let folderName = "tvmaze_images"
     private let imageName: String
 
     private func downloadImage() {
-        guard let image = tvShow.image?.medium,
+        guard let image = tvShowImage.medium,
               let url = URL(string: image) else { return }
 
         imageSubscription = networkingManager.download(url: url)

@@ -35,11 +35,12 @@ class ViewModelFactory: ObservableObject {
 
     // MARK: - Image
 
-    func makeImageViewModel(tvShow: TvShow) -> ImageViewModel {
+    func makeImageViewModel(tvShowImage: TvShow.Image, id: String) -> ImageViewModel {
         let imagesDataService = ImagesDataService(
             fileManager: localFileManager,
             networkingManager: networkingManager,
-            tvShow: tvShow)
+            tvShowImage: tvShowImage,
+            id: id)
         return ImageViewModel(imagesDataService: imagesDataService)
     }
 }
