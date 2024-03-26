@@ -65,5 +65,5 @@ extension ShowsView {
     NavigationView {
         ShowsView()
     }
-    .environmentObject(ShowsViewModel(showDataService: ShowsRemoteDataService()!))
+    .environmentObject(ShowsViewModel(showDataService: ShowsRemoteDataService()))
 }

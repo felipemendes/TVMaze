@@ -21,8 +21,8 @@ final class ImagesDataService: ImagesDataServiceProtocol {
     // MARK: - Initializer
 
     init(
-        fileManager: LocalFileManagerProtocol = LocalFileManager(),
-        networkingManager: NetworkingManagerProtocol = NetworkingManager(),
+        fileManager: LocalFileManagerProtocol,
+        networkingManager: NetworkingManagerProtocol,
         show: Show
     ) {
         self.fileManager = fileManager

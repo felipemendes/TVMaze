@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import TVMazeServiceKit
 
 protocol ImageViewModelProtocol {
     var image: UIImage? { get }
@@ -25,7 +26,10 @@ final class ImageViewModel: ObservableObject, ImageViewModelProtocol {
     // MARK: - Initializer
 
     init(show: Show) {
-        self.imagesDataService = ImagesDataService(show: show)
+        self.imagesDataService = ImagesDataService(
+            fileManager: LocalFileManager(),
+            networkingManager: NetworkingManager(),
+            show: show)
 
         addSubscribers()
 

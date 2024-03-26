@@ -11,8 +11,8 @@ import TVMazeServiceKit
 
 protocol ShowsRemoteDataServiceProtocol {
     var showsPublisher: [Show] { get }
-    var showSubscription: AnyCancellable? { get }
-    var showsURL: URL { get }
+    var showsSubscription: AnyCancellable? { get }
+    var showsURL: URL? { get }
 
     func fetchShows()
 }
@@ -22,36 +22,34 @@ final class ShowsRemoteDataService: ShowsRemoteDataServiceProtocol {
     // MARK: - Initializer
 
     init(
-        networkingManager: NetworkingManagerProtocol = NetworkingManager(),
-        showsURL: URL
+        networkingManager: NetworkingManagerProtocol,
+        showsURL: URL?
     ) {
         self.networkingManager = networkingManager
         self.showsURL = showsURL
     }
 
-    convenience init?() {
-        guard let url = Environment.showsURL else {
-            return nil
-        }
-
-        self.init(showsURL: url)
+    convenience init() {
+        self.init(networkingManager: NetworkingManager(), showsURL: Environment.showsURL)
     }
 
     // MARK: - Public API
 
     @Published var showsPublisher: [Show] = []
-    var showSubscription: AnyCancellable?
-    let showsURL: URL
+    var showsSubscription: AnyCancellable?
+    let showsURL: URL?
 
     func fetchShows() {
-        showSubscription?.cancel()
+        showsSubscription?.cancel()
 
-        showSubscription = networkingManager.download(url: showsURL)
+        guard let showsURL else { return }
+
+        showsSubscription = networkingManager.download(url: showsURL)
             .decode(type: [Show].self, decoder: JSONDecoder())
             .sink(receiveCompletion: networkingManager.handleCompletion, receiveValue: { [weak self] shows in
                 guard let self else { return }
                 self.showsPublisher = shows
-                self.showSubscription?.cancel()
+                self.showsSubscription?.cancel()
             })
     }
 

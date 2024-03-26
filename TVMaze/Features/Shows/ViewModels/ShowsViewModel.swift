@@ -16,7 +16,7 @@ protocol ShowsViewModelProtocol {
     func reloadData()
 }
 
-final class ShowsViewModel: ObservableObject {
+final class ShowsViewModel: ObservableObject, ShowsViewModelProtocol {
 
     // MARK: - Initializer
 
@@ -44,11 +44,16 @@ final class ShowsViewModel: ObservableObject {
 
     private func addSubscribers() {
         showDataService.$showsPublisher
-            .sink { [weak self] response in
+            .sink(receiveCompletion: { [weak self] completion in
+                switch completion {
+                case .finished: self?.state = .content
+                case let .failure(error): self?.state = .error(error.localizedDescription)
+                }
+            }, receiveValue: { [weak self] response in
                 guard let self else { return }
                 self.allShows = response
                 self.state = .content
-            }
+            })
             .store(in: &cancellables)
     }
 }
