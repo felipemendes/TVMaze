@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Show {
+extension TvShow {
     struct Embedded: Codable {
         let episodes: [Episode]?
 
@@ -15,7 +15,7 @@ extension Show {
             let id: Int
             let name: String?
             let season, number: Int?
-            let image: ShowImage?
+            let image: Image?
         }
     }
 }

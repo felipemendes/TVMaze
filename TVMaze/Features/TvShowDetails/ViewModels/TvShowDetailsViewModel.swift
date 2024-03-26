@@ -1,57 +1,62 @@
 //
-//  ShowsViewModel.swift
+//  TvShowDetailsViewModel.swift
 //  TVMaze
 //
-//  Created by Felipe Mendes on 25/03/24.
+//  Created by Felipe Mendes on 26/03/24.
 //
 
 import Foundation
 import Combine
 import TVMazeServiceKit
 
-protocol ShowsViewModelProtocol {
-    var allShows: [Show] { get }
+protocol TvShowDetailsViewModelProtocol {
+    var tvShowDetailsDataService: TvShowDetailsRemoteDataService { get }
+    var tvShow: TvShow? { get }
     var state: ViewState { get }
 
     func reloadData()
 }
 
-final class ShowsViewModel: ObservableObject, ShowsViewModelProtocol {
+final class TvShowDetailsViewModel: ObservableObject, TvShowDetailsViewModelProtocol {
 
     // MARK: - Initializer
 
-    init(showDataService: ShowsRemoteDataService) {
-        self.showDataService = showDataService
+    init(
+        tvShowDetailsDataService: TvShowDetailsRemoteDataService,
+        tvShow: TvShow?
+    ) {
+        self.tvShowDetailsDataService = tvShowDetailsDataService
+        self.tvShow = tvShow
 
         addSubscribers()
-        reloadData()
     }
 
     // MARK: - Public API
 
-    @Published var allShows: [Show] = []
+    let tvShowDetailsDataService: TvShowDetailsRemoteDataService
+    var tvShow: TvShow?
     @Published var state: ViewState = .loading
 
     func reloadData() {
         state = .loading
-        showDataService.fetchShows()
+        tvShowDetailsDataService.fetchDetails()
     }
 
     // MARK: - Private
 
-    private let showDataService: ShowsRemoteDataService
     private var cancellables = Set<AnyCancellable>()
 
     private func addSubscribers() {
-        showDataService.$showsPublisher
+        tvShowDetailsDataService.$tvShowDetailsPublisher
             .sink(receiveCompletion: { [weak self] completion in
                 switch completion {
                 case .finished: self?.state = .content
                 case let .failure(error): self?.state = .error(error.localizedDescription)
                 }
             }, receiveValue: { [weak self] response in
-                guard let self else { return }
-                self.allShows = response
+                guard let self,
+                      let response else { return }
+                self.tvShow = response
                 self.state = .content
             })
             .store(in: &cancellables)

@@ -12,7 +12,7 @@ import TVMazeServiceKit
 @testable import TVMaze
 
 final class MockNetworkingManager: NetworkingManagerProtocol {
-    var mockResponse: AnyPublisher<[Show], Error>?
+    var mockResponse: AnyPublisher<[TvShow], Error>?
     var lastUsedURL: URL?
 
     func download(url: URL) -> AnyPublisher<Data, Error> {

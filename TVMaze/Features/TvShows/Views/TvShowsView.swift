@@ -1,5 +1,5 @@
 //
-//  ShowsView.swift
+//  TvShowsView.swift
 //  TVMaze
 //
 //  Created by Felipe Mendes on 25/03/24.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct ShowsView: View {
-    @ObservedObject var viewModel: ShowsViewModel
+struct TvShowsView: View {
+    @ObservedObject var viewModel: TvShowsViewModel
     @EnvironmentObject var viewModelFactory: ViewModelFactory
 
-    @State private var selectedShow: Show? = nil
-    @State private var showDetailView: Bool = false
+    @State private var selectedTvShow: TvShow? = nil
+    @State private var tvShowDetailView: Bool = false
 
     var body: some View {
 
@@ -29,18 +29,18 @@ struct ShowsView: View {
 
 // MARK: - All TV Shows
 
-extension ShowsView {
+extension TvShowsView {
     private var tvShowsContent: some View {
         ZStack {
             Color.theme.background
                 .ignoresSafeArea()
 
             List {
-                ForEach(viewModel.allShows) { show in
-                    ShowRowView(show: show)
+                ForEach(viewModel.allTvShows) { tvShow in
+                    TvShowRowView(tvShow: tvShow)
                         .listRowInsets(EdgeInsets())
                         .onTapGesture {
-                            segue(show: show)
+                            segue(tvShow: tvShow)
                         }
                         .environmentObject(viewModelFactory)
                 }
@@ -60,25 +60,25 @@ extension ShowsView {
         }
         .background(
             NavigationLink(
-                destination: DetailsView(viewModel: viewModelFactory.makeDetailsViewModel(show: $selectedShow.wrappedValue))
+                destination: TvShowDetailsView(viewModel: viewModelFactory.makeTvShowDetailsViewModel(tvShow: $selectedTvShow.wrappedValue))
                     .environmentObject(viewModelFactory),
-                isActive: $showDetailView) {
+                isActive: $tvShowDetailView) {
                     EmptyView()
                 }
         )
     }
 }
 
-extension ShowsView {
-    private func segue(show: Show) {
-        selectedShow = show
-        showDetailView.toggle()
+extension TvShowsView {
+    private func segue(tvShow: TvShow) {
+        selectedTvShow = tvShow
+        tvShowDetailView.toggle()
     }
 }
 
 #Preview {
     NavigationView {
-        ShowsView(viewModel: ViewModelFactory().makeShowsViewModel())
+        TvShowsView(viewModel: ViewModelFactory().makeTvShowsViewModel())
     }
     .environmentObject(ViewModelFactory())
 }

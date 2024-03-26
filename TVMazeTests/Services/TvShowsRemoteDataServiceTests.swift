@@ -1,5 +1,5 @@
 //
-//  ShowsRemoteDataServiceTests.swift
+//  TvShowsRemoteDataServiceTests.swift
 //  TVMazeTests
 //
 //  Created by Felipe Mendes on 25/03/24.
@@ -9,17 +9,17 @@ import XCTest
 import Combine
 @testable import TVMaze
 
-final class ShowsRemoteDataServiceTests: XCTestCase {
+final class TvShowsRemoteDataServiceTests: XCTestCase {
     var mockNetworkingManager: MockNetworkingManager!
-    var sut: ShowsRemoteDataService!
+    var sut: TvShowsRemoteDataService!
     var cancellables: Set<AnyCancellable>!
 
     override func setUp() {
         super.setUp()
         mockNetworkingManager = MockNetworkingManager()
-        sut = ShowsRemoteDataService(
+        sut = TvShowsRemoteDataService(
             networkingManager: mockNetworkingManager,
-            showsURL: URL(string: "https://mock.shows.url")!)
+            tvShowsURL: URL(string: "https://mock.tvshows.url")!)
         cancellables = []
     }
 
@@ -30,36 +30,36 @@ final class ShowsRemoteDataServiceTests: XCTestCase {
         super.tearDown()
     }
 
-    func test_fetchShowsUsesCorrectURL() {
+    func test_fetchTvShowsUsesCorrectURL() {
         // Given
         let expectedURL = URL(string: "https://mock.shows.url")!
-        let sut = ShowsRemoteDataService(networkingManager: mockNetworkingManager, showsURL: expectedURL)
+        let sut = TvShowsRemoteDataService(networkingManager: mockNetworkingManager, tvShowsURL: expectedURL)
 
         // When
-        sut.fetchShows()
+        sut.fetchTvShows()
 
         // Then
         XCTAssertEqual(mockNetworkingManager.lastUsedURL, expectedURL)
     }
 
-    func test_fetchShowsSuccess() {
+    func test_fetchTvShowsSuccess() {
         // Given
-        let mockShows = MockShow.shows
-        let mockResponse = Just(mockShows)
+        let mockTvShows = MockTvShow.tvShows
+        let mockResponse = Just(mockTvShows)
             .setFailureType(to: Error.self)
             .eraseToAnyPublisher()
         mockNetworkingManager.mockResponse = mockResponse
 
-        let expectation = XCTestExpectation(description: "Fetch shows succeeds and publishes shows")
+        let expectation = XCTestExpectation(description: "Fetch tv shows succeeds and publishes tv shows")
 
         // When
-        sut.fetchShows()
+        sut.fetchTvShows()
 
         // Then
-        sut.$showsPublisher
-            .sink(receiveValue: { shows in
-                XCTAssertEqual(shows.count, mockShows.count, "Fetched shows count should match mock shows count")
-                XCTAssertEqual(shows.first?.name, mockShows.first?.name, "Fetched show name should match mock show name")
+        sut.$tvShowsPublisher
+            .sink(receiveValue: { tvShows in
+                XCTAssertEqual(tvShows.count, mockTvShows.count, "Fetched tv shows count should match mock tv shows count")
+                XCTAssertEqual(tvShows.first?.name, mockTvShows.first?.name, "Fetched tv show name should match mock tv show name")
                 expectation.fulfill()
             })
             .store(in: &cancellables)

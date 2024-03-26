@@ -1,5 +1,5 @@
 //
-//  ShowRowView.swift
+//  TvShowRowView.swift
 //  TVMaze
 //
 //  Created by Felipe Mendes on 25/03/24.
@@ -7,13 +7,12 @@
 
 import SwiftUI
 
-struct ShowRowView: View {
+struct TvShowRowView: View {
 
     @EnvironmentObject var viewModelFactory: ViewModelFactory
-    @State var show: Show
+    @State var tvShow: TvShow
 
     var body: some View {
-        
         HStack {
             poster
             content
@@ -36,9 +35,9 @@ struct ShowRowView: View {
 
 // MARK: - Poster
 
-extension ShowRowView {
+extension TvShowRowView {
     @ViewBuilder private var poster: some View {
-        ImageView(viewModel: viewModelFactory.makeImageViewModel(show: show))
+        ImageView(viewModel: viewModelFactory.makeImageViewModel(tvShow: tvShow))
             .scaledToFit()
             .foregroundStyle(Color.theme.secondaryText)
             .padding()
@@ -56,15 +55,15 @@ extension ShowRowView {
 
 // MARK: - Content
 
-extension ShowRowView {
+extension TvShowRowView {
     @ViewBuilder private var content: some View {
         VStack(alignment: .leading) {
-            Text(show.name ?? "")
+            Text(tvShow.name ?? "")
                 .font(.headline)
                 .foregroundStyle(Color.theme.accent)
                 .lineLimit(1)
 
-            if let genres = show.genres {
+            if let genres = tvShow.genres {
                 HStack {
                     ForEach(Array(genres.enumerated()), id: \.offset) { index, genre in
                         HStack {
@@ -86,7 +85,7 @@ extension ShowRowView {
 
             Divider()
 
-            Text((show.summary ?? "").strippingHTML)
+            Text((tvShow.summary ?? "").strippingHTML)
                 .font(.subheadline)
                 .multilineTextAlignment(.leading)
                 .lineLimit(3)
@@ -96,15 +95,15 @@ extension ShowRowView {
 }
 
 #Preview(traits: .sizeThatFitsLayout) {
-    ShowRowView(show: Show(
+    TvShowRowView(tvShow: TvShow(
         id: 1,
-        name: "Mock Show 1",
+        name: "Mock TV Show 1",
         genres: ["Comedy", "Drama"],
-        schedule: Show.Schedule(
+        schedule: TvShow.Schedule(
             time: "20:00",
             days: ["Mock Day 1"]
         ),
-        image: Show.ShowImage(
+        image: TvShow.Image(
             medium: "https://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg",
             original: "https://static.tvmaze.com/uploads/images/original_untouched/81/202627.jpg"
         ),

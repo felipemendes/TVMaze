@@ -15,31 +15,31 @@ class ViewModelFactory: ObservableObject {
     let networkingManager = NetworkingManager()
     let localFileManager = LocalFileManager()
 
-    // MARK: - Shows
+    // MARK: - TV Shows
 
-    func makeShowsViewModel() -> ShowsViewModel {
-        let showsDataService = ShowsRemoteDataService(networkingManager: networkingManager)
-        return ShowsViewModel(showDataService: showsDataService)
+    func makeTvShowsViewModel() -> TvShowsViewModel {
+        let tvShowsDataService = TvShowsRemoteDataService(networkingManager: networkingManager)
+        return TvShowsViewModel(tvShowDataService: tvShowsDataService)
     }
 
-    // MARK: - Details
+    // MARK: - TV Show Details
 
-    func makeDetailsViewModel(show: Show?) -> DetailsViewModel {
-        let showDetailsDataService = ShowDetailsRemoteDataService(
+    func makeTvShowDetailsViewModel(tvShow: TvShow?) -> TvShowDetailsViewModel {
+        let tvShowDetailsDataService = TvShowDetailsRemoteDataService(
             networkingManager: networkingManager,
-            showID: show?.id)
-        return DetailsViewModel(
-            showDetailsDataService: showDetailsDataService,
-            show: show)
+            tvShowID: tvShow?.id)
+        return TvShowDetailsViewModel(
+            tvShowDetailsDataService: tvShowDetailsDataService,
+            tvShow: tvShow)
     }
 
     // MARK: - Image
 
-    func makeImageViewModel(show: Show) -> ImageViewModel {
+    func makeImageViewModel(tvShow: TvShow) -> ImageViewModel {
         let imagesDataService = ImagesDataService(
             fileManager: localFileManager,
             networkingManager: networkingManager,
-            show: show)
+            tvShow: tvShow)
         return ImageViewModel(imagesDataService: imagesDataService)
     }
 }

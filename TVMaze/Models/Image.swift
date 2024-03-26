@@ -1,5 +1,5 @@
 //
-//  ShowImage.swift
+//  Image.swift
 //  TVMaze
 //
 //  Created by Felipe Mendes on 25/03/24.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-extension Show {
-    struct ShowImage: Codable {
+extension TvShow {
+    struct Image: Codable {
         let medium, original: String?
     }
 }

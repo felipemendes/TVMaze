@@ -26,7 +26,7 @@ struct TVMazeApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                ShowsView(viewModel: viewModelFactory.makeShowsViewModel())
+                TvShowsView(viewModel: viewModelFactory.makeTvShowsViewModel())
             }
         }
         .environmentObject(viewModelFactory)
