@@ -11,11 +11,11 @@ extension TvShow {
     struct Embedded: Codable {
         let episodes: [Episode]?
 
-        struct Episode: Codable {
+        struct Episode: Codable, Identifiable {
             let id: Int
             let name: String?
             let season, number: Int?
-            let image: Image?
+            let image: TvShow.Image?
         }
     }
 }

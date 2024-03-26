@@ -32,10 +32,10 @@ struct TvShowDetailsHeader: View {
 
 extension TvShowDetailsHeader {
     @ViewBuilder private var poster: some View {
-        if let tvShow = viewModel.tvShow {
-            ImageView(viewModel: viewModelFactory.makeImageViewModel(tvShow: tvShow))
+        if let tvShow = viewModel.tvShow,
+           let image = tvShow.image {
+            ImageView(viewModel: viewModelFactory.makeImageViewModel(tvShowImage: image, id: "\(tvShow.id)"))
                 .scaledToFit()
-                .foregroundStyle(Color.theme.secondaryText)
                 .padding()
                 .frame(
                     width: UIScreen.main.bounds.width / 2,
@@ -57,10 +57,10 @@ extension TvShowDetailsHeader {
         if let genres = viewModel.tvShow?.genres {
             VStack(alignment: .listRowSeparatorLeading) {
                 Text("Genres")
+                    .bold()
                     .foregroundStyle(Color.theme.accent)
                 ForEach(Array(genres.enumerated()), id: \.offset) { index, genre in
                     Text(genre)
-                        .bold()
                         .foregroundStyle(Color.theme.secondaryText)
                         .lineLimit(1)
                         .multilineTextAlignment(.leading)
@@ -83,12 +83,10 @@ extension TvShowDetailsHeader {
             HStack(alignment: .top) {
                 VStack(alignment: .listRowSeparatorLeading) {
                     Text("On air")
-                        .font(.subheadline)
+                        .bold()
                         .foregroundStyle(Color.theme.accent)
                     ForEach(Array(days.enumerated()), id: \.offset) { index, genre in
                         Text(genre)
-                            .font(.subheadline)
-                            .bold()
                             .foregroundStyle(Color.theme.secondaryText)
                             .lineLimit(1)
                             .multilineTextAlignment(.leading)
@@ -99,11 +97,9 @@ extension TvShowDetailsHeader {
 
                 VStack(alignment: .listRowSeparatorLeading) {
                     Text("At")
-                        .font(.subheadline)
+                        .bold()
                         .foregroundStyle(Color.theme.accent)
                     Text(time)
-                        .font(.subheadline)
-                        .bold()
                         .foregroundStyle(Color.theme.secondaryText)
                         .lineLimit(1)
                         .multilineTextAlignment(.leading)
