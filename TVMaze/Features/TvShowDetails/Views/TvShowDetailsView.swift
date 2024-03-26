@@ -18,7 +18,10 @@ struct TvShowDetailsView: View {
             case .loading:
                 loadingView
             case .content:
-                tvShowContent
+                ScrollView {
+                    tvShowContent
+                }
+                .navigationTitle(viewModel.tvShow?.name ?? "Details")
             case let .error(errorMessage):
                 Text(errorMessage)
             }
@@ -32,9 +35,27 @@ struct TvShowDetailsView: View {
 extension TvShowDetailsView {
     private var tvShowContent: some View {
         VStack {
-            Text(viewModel.tvShow?.name ?? "")
-            Text(viewModel.tvShow?.embedded?.episodes?.description ?? "")
+            TvShowDetailsHeader(
+                viewModel: viewModel,
+                viewModelFactory: _viewModelFactory)
+            summary
         }
+        .padding()
+    }
+}
+
+// MARK: - Summary
+
+extension TvShowDetailsView {
+    @ViewBuilder private var summary: some View {
+        Text("Summary")
+            .foregroundStyle(Color.theme.accent)
+            .frame(maxWidth: .infinity, alignment: .leading)
+
+        Text((viewModel.tvShow?.summary ?? "")/*.strippingHTML*/)
+            .font(.body)
+            .multilineTextAlignment(.leading)
+            .foregroundStyle(Color.theme.secondaryText)
     }
 }
 

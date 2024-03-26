@@ -36,6 +36,7 @@
 		0249E7FE2BB31C8300BBC79B /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E7FD2BB31C8300BBC79B /* ViewModelFactory.swift */; };
 		0249E8002BB324D700BBC79B /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E7FF2BB324D700BBC79B /* View+Extensions.swift */; };
 		0249E8022BB334B000BBC79B /* EmbeddedEpisodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E8012BB334B000BBC79B /* EmbeddedEpisodes.swift */; };
+		0249E8042BB368A500BBC79B /* TvShowDetailsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E8032BB368A500BBC79B /* TvShowDetailsHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		0249E7FD2BB31C8300BBC79B /* ViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactory.swift; sourceTree = "<group>"; };
 		0249E7FF2BB324D700BBC79B /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		0249E8012BB334B000BBC79B /* EmbeddedEpisodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedEpisodes.swift; sourceTree = "<group>"; };
+		0249E8032BB368A500BBC79B /* TvShowDetailsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvShowDetailsHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				0249E7FA2BB3011600BBC79B /* TvShowDetailsView.swift */,
+				0249E8032BB368A500BBC79B /* TvShowDetailsHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				0249E77D2BB1F71800BBC79B /* ContentView.swift in Sources */,
 				0249E7AE2BB2158900BBC79B /* Image.swift in Sources */,
 				0249E7E42BB23C2D00BBC79B /* ImagesDataService.swift in Sources */,
+				0249E8042BB368A500BBC79B /* TvShowDetailsHeader.swift in Sources */,
 				0249E7F92BB29E6B00BBC79B /* TvShowDetailsRemoteDataService.swift in Sources */,
 				0249E7F02BB26BBA00BBC79B /* String+Extensions.swift in Sources */,
 				0249E7942BB1FCCF00BBC79B /* ColorTheme.swift in Sources */,
