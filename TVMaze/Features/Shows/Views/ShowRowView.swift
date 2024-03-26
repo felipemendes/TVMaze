@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ShowRowView: View {
 
-    let show: Show
+    @EnvironmentObject var viewModelFactory: ViewModelFactory
+    @State var show: Show
 
     var body: some View {
         
@@ -37,7 +38,7 @@ struct ShowRowView: View {
 
 extension ShowRowView {
     @ViewBuilder private var poster: some View {
-        ImageView(show: show)
+        ImageView(viewModel: viewModelFactory.makeImageViewModel(show: show))
             .scaledToFit()
             .foregroundStyle(Color.theme.secondaryText)
             .padding()

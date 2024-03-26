@@ -42,6 +42,7 @@ extension ShowsView {
                         .onTapGesture {
                             segue(show: show)
                         }
+                        .environmentObject(viewModelFactory)
                 }
                 .listRowSeparator(.hidden)
             }

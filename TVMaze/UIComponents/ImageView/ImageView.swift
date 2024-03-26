@@ -9,11 +9,7 @@ import SwiftUI
 
 struct ImageView: View {
 
-    @StateObject var viewModel: ImageViewModel
-
-    init(show: Show) {
-        _viewModel = StateObject(wrappedValue: ImageViewModel(show: show))
-    }
+    @ObservedObject var viewModel: ImageViewModel
 
     var body: some View {
         ZStack {
@@ -32,7 +28,7 @@ struct ImageView: View {
 }
 
 #Preview(traits: .sizeThatFitsLayout) {
-    ImageView(
+    ImageView(viewModel: ViewModelFactory().makeImageViewModel(
         show: Show(
             id: 1,
             name: "Mock Show 1",
@@ -47,6 +43,6 @@ struct ImageView: View {
             ),
             summary: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pulvinar a ipsum vitae euismod. Aliquam sed venenatis lorem. Sed nec justo efficitur, molestie neque sed, consequat orci. Ut dictum quam vel bibendum bibendum. Mauris convallis, augue vitae faucibus molestie, urna ligula pretium nisi, ut semper arcu nisl ac enim. Integer posuere sollicitudin bibendum. Vestibulum eu lacinia ex. Nam ac augue pharetra, imperdiet nisl et, fermentum eros.</p>",
             embedded: nil
-        ))
+        )))
     .padding()
 }

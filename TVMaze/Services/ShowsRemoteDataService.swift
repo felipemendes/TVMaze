@@ -29,8 +29,8 @@ final class ShowsRemoteDataService: ShowsRemoteDataServiceProtocol {
         self.showsURL = showsURL
     }
 
-    convenience init() {
-        self.init(networkingManager: NetworkingManager(), showsURL: Environment.showsURL)
+    convenience init(networkingManager: NetworkingManagerProtocol) {
+        self.init(networkingManager: networkingManager, showsURL: Environment.showsURL)
     }
 
     // MARK: - Public API

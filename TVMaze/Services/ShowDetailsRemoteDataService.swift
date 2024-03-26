@@ -30,9 +30,12 @@ class ShowDetailsRemoteDataService: ShowDetailsRemoteDataServiceProtocol {
         self.showDetailsURL = Environment.showDetailsURL(showID: showID)
     }
 
-    convenience init(showID: Int?) {
+    convenience init(
+        networkingManager: NetworkingManagerProtocol,
+        showID: Int?
+    ) {
         let showDetailsURL = Environment.showDetailsURL(showID: showID)
-        self.init(networkingManager: NetworkingManager(), showID: showID, showDetailsURL: showDetailsURL)
+        self.init(networkingManager: networkingManager, showID: showID, showDetailsURL: showDetailsURL)
     }
 
     // MARK: - Public API

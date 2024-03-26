@@ -25,11 +25,8 @@ final class ImageViewModel: ObservableObject, ImageViewModelProtocol {
 
     // MARK: - Initializer
 
-    init(show: Show) {
-        self.imagesDataService = ImagesDataService(
-            fileManager: LocalFileManager(),
-            networkingManager: NetworkingManager(),
-            show: show)
+    init(imagesDataService: ImagesDataService) {
+        self.imagesDataService = imagesDataService
 
         addSubscribers()
 
