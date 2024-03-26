@@ -24,12 +24,13 @@ final class ImageViewModel: ObservableObject, ImageViewModelProtocol {
 
     // MARK: - Initializer
 
-    init(imagesDataService: ImagesDataService) {
-        self.imagesDataService = imagesDataService
-        self.isLoading = true
+    init(show: Show) {
+        self.imagesDataService = ImagesDataService(show: show)
 
-        imagesDataService.fetchImage()
         addSubscribers()
+
+        self.isLoading = true
+        self.imagesDataService.fetchImage()
     }
 
     // MARK: - Private

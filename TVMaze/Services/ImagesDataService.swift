@@ -23,11 +23,12 @@ final class ImagesDataService: ImagesDataServiceProtocol {
     init(
         fileManager: LocalFileManagerProtocol = LocalFileManager(),
         networkingManager: NetworkingManagerProtocol = NetworkingManager(),
-        imageName: String
+        show: Show
     ) {
         self.fileManager = fileManager
         self.networkingManager = networkingManager
-        self.imageName = imageName
+        self.show = show
+        self.imageName = "\(show.id)"
     }
 
     // MARK: - Public API
@@ -38,10 +39,10 @@ final class ImagesDataService: ImagesDataServiceProtocol {
     func fetchImage() {
         if let savedImage = fileManager.getImage(imageName: imageName, folderName: folderName) {
             image = savedImage
-            print("Retrieved local image")
+            print("✅ Retrieving local image")
         } else {
             downloadImage()
-            print("Downloading remote image")
+            print("⚠️ Downloading remote image")
         }
     }
 
@@ -49,17 +50,16 @@ final class ImagesDataService: ImagesDataServiceProtocol {
 
     private let fileManager: LocalFileManagerProtocol
     private let networkingManager: NetworkingManagerProtocol
+    private var show: Show
 
-    private let folderName = "coin_images"
+    private let folderName = "tvmaze_images"
     private let imageName: String
 
     private func downloadImage() {
-        guard let url = URL(string: imageName) else { return }
+        guard let image = show.image?.medium,
+              let url = URL(string: image) else { return }
 
         imageSubscription = networkingManager.download(url: url)
-//            .tryMap { data -> UIImage? in
-//                return UIImage(data: data)
-//            }
             .tryMap { UIImage(data: $0) }
             .sink(receiveCompletion: networkingManager.handleCompletion, receiveValue: { [weak self] response in
                 guard let self = self,

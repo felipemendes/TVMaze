@@ -22,7 +22,7 @@ final class ShowsRemoteDataService: ShowsRemoteDataServiceProtocol {
     // MARK: - Initializer
 
     init(
-        networkingManager: NetworkingManagerProtocol,
+        networkingManager: NetworkingManagerProtocol = NetworkingManager(),
         showsURL: URL
     ) {
         self.networkingManager = networkingManager
@@ -34,7 +34,7 @@ final class ShowsRemoteDataService: ShowsRemoteDataServiceProtocol {
             return nil
         }
 
-        self.init(networkingManager: NetworkingManager(), showsURL: url)
+        self.init(showsURL: url)
     }
 
     // MARK: - Public API

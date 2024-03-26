@@ -37,30 +37,19 @@ struct ShowRowView: View {
 
 extension ShowRowView {
     @ViewBuilder private var poster: some View {
-        if let image = show.image?.medium {
-            ImageView(imageName: image)
-                .scaledToFit()
-                .foregroundStyle(Color.theme.secondaryText)
-                .padding()
-                .frame(
-                    width: UIScreen.main.bounds.width / 3,
-                    height: 150)
-                .shadow(
-                    color: Color.black.opacity(0.3),
-                    radius: 2,
-                    x: 2,
-                    y: 2
-                )
-        } else {
-            Image(systemName: "questionmark")
-                .resizable()
-                .scaledToFit()
-                .foregroundStyle(Color.theme.secondaryText)
-                .padding()
-                .frame(
-                    width: UIScreen.main.bounds.width / 3,
-                    height: 100)
-        }
+        ImageView(show: show)
+            .scaledToFit()
+            .foregroundStyle(Color.theme.secondaryText)
+            .padding()
+            .frame(
+                width: UIScreen.main.bounds.width / 3,
+                height: 150)
+            .shadow(
+                color: Color.black.opacity(0.3),
+                radius: 2,
+                x: 2,
+                y: 2
+            )
     }
 }
 
