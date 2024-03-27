@@ -19,11 +19,12 @@ struct SeasonView: View {
         VStack(alignment: .leading) {
             Text("Season \(season)")
                 .font(.subheadline)
-                .foregroundStyle(Color.theme.accent)
+                .bold()
+                .foregroundStyle(Color.theme.secondaryText)
                 .frame(maxWidth: .infinity, alignment: .leading)
 
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 10) {
+                HStack(alignment: .top, spacing: 10) {
                     ForEach(episodes, id: \.id) { episode in
                         EpisodeView(episode: episode, viewModelFactory: viewModelFactory)
                             .onTapGesture {

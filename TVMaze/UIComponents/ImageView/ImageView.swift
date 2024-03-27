@@ -22,6 +22,15 @@ struct ImageView: View {
             } else {
                 Image(systemName: "questionmark")
                     .foregroundStyle(Color.theme.secondaryText)
+                    .frame(
+                        width: UIScreen.main.bounds.width / 3,
+                        height: UIScreen.main.bounds.width / 3)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 0)
+                            .stroke(
+                                Color.theme.accent.opacity(0.1),
+                                lineWidth: 2)
+                    )
             }
         }
     }

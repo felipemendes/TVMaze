@@ -12,31 +12,55 @@ struct EpisodeView: View {
     var viewModelFactory: ViewModelFactory
 
     var body: some View {
-        if let image = episode.image, 
-            let episodeNumber = episode.number {
+        VStack {
             ZStack(alignment: .bottomTrailing) {
+                if let image = episode.image {
                 ImageView(viewModel: viewModelFactory.makeImageViewModel(tvShowImage: image, id: "\(episode.season ?? 0)_\(episode.id)"))
-                    .scaledToFill()
-                    .foregroundStyle(Color.theme.secondaryText)
-                    .frame(
-                        width: UIScreen.main.bounds.width / 3,
-                        height: UIScreen.main.bounds.width / 3)
-                    .shadow(
-                        color: Color.black.opacity(0.3),
-                        radius: 2, x: 2, y: 2)
-                    .clipped()
+                        .scaledToFill()
+                        .frame(
+                            width: UIScreen.main.bounds.width / 3,
+                            height: UIScreen.main.bounds.width / 3)
+                        .shadow(
+                            color: Color.theme.accent.opacity(0.1),
+                            radius: 10,
+                            x: 0,
+                            y: 0
+                        )
+                        .clipped()
+                } else {
+                    Image(systemName: "questionmark")
+                        .foregroundStyle(Color.theme.secondaryText)
+                        .frame(
+                            width: UIScreen.main.bounds.width / 3,
+                            height: UIScreen.main.bounds.width / 3)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 0)
+                                .stroke(
+                                    Color.theme.accent.opacity(0.1),
+                                    lineWidth: 2)
+                        )
+                }
 
-                Text("\(episodeNumber)")
-                    .font(.caption)
-                    .bold()
-                    .foregroundStyle(Color.theme.accent)
-                    .padding(6)
-                    .background(
-                        Circle()
-                            .fill(Color.theme.background.opacity(0.75))
-                    )
-                    .offset(x: -10, y: -10)
+                if let episodeNumber = episode.number {
+                    Text("\(episodeNumber)")
+                        .font(.caption)
+                        .bold()
+                        .foregroundStyle(Color.theme.accent)
+                        .padding(6)
+                        .background(
+                            Circle()
+                                .fill(Color.theme.background.opacity(0.75))
+                        )
+                        .offset(x: -10, y: -10)
+                }
             }
+
+            Text(episode.name ?? "Unknown Episode")
+                .font(.subheadline)
+                .lineLimit(2)
+                .bold()
+                .foregroundStyle(Color.theme.accent)
+                .frame(width: UIScreen.main.bounds.width / 3)
         }
     }
 }

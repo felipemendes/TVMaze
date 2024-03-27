@@ -19,7 +19,7 @@ struct EpisodeDetailsView: View {
                 content
             }
             .padding()
-            .navigationBarTitle(episode?.name ?? "Episode Details")
+            .navigationBarTitle("Episode Details")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     XMarkButton(dismiss: _dismiss)
@@ -36,16 +36,29 @@ extension EpisodeDetailsView {
         if let episode = episode {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
-                    episode.image.map {
-                        ImageView(viewModel: viewModelFactory.makeImageViewModel(tvShowImage: $0, id: "\(episode.id)"))
-                            .scaledToFit()
-                    }
-
-                    Text("Season \(episode.season ?? 0), Episode \(episode.number ?? 0)")
-                        .font(.headline)
+                    
+                    Text(episode.name ?? "")
+                        .font(.title)
                         .bold()
                         .foregroundStyle(Color.theme.accent)
                         .frame(maxWidth: .infinity, alignment: .leading)
+
+                    Text("Season \(episode.season ?? 0), Episode \(episode.number ?? 0)")
+                        .font(.subheadline)
+                        .bold()
+                        .foregroundStyle(Color.theme.secondaryText)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+
+                    episode.image.map {
+                        ImageView(viewModel: viewModelFactory.makeImageViewModel(tvShowImage: $0, id: "\(episode.id)"))
+                            .scaledToFit()
+                            .shadow(
+                                color: Color.black.opacity(0.3),
+                                radius: 2,
+                                x: 2,
+                                y: 2
+                            )
+                    }
 
                     SummaryView(summary: episode.summary)
                 }

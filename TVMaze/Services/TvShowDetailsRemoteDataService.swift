@@ -52,9 +52,9 @@ class TvShowDetailsRemoteDataService: TvShowDetailsRemoteDataServiceProtocol {
 
         tvShowDetailsSubscription = networkingManager.download(url: tvShowDetailsURL)
             .decode(type: TvShow.self, decoder: JSONDecoder())
-            .sink(receiveCompletion: networkingManager.handleCompletion, receiveValue: { [weak self] tvShowDetails in
+            .sink(receiveCompletion: networkingManager.handleCompletion, receiveValue: { [weak self] response in
                 guard let self else { return }
-                self.tvShowDetailsPublisher = tvShowDetails
+                self.tvShowDetailsPublisher = response
                 self.tvShowDetailsSubscription?.cancel()
             })
     }

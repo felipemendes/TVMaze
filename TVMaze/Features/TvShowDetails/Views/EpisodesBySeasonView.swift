@@ -14,7 +14,7 @@ struct EpisodesBySeasonView: View {
     var body: some View {
         VStack(spacing: 20) {
             Text("Episodes by season")
-                .font(.headline)
+                .font(.title)
                 .bold()
                 .foregroundStyle(Color.theme.accent)
                 .frame(maxWidth: .infinity, alignment: .leading)
