@@ -30,7 +30,7 @@ final class TvShowsRemoteDataService: TvShowsRemoteDataServiceProtocol {
     }
 
     convenience init(networkingManager: NetworkingManagerProtocol) {
-        self.init(networkingManager: networkingManager, tvShowsURL: Environment.tvShowsURL)
+        self.init(networkingManager: networkingManager, tvShowsURL: Constants.tvShowsURL)
     }
 
     // MARK: - Public API

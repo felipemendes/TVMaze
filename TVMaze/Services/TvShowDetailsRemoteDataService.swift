@@ -27,14 +27,14 @@ class TvShowDetailsRemoteDataService: TvShowDetailsRemoteDataServiceProtocol {
         tvShowDetailsURL: URL?
     ) {
         self.networkingManager = networkingManager
-        self.tvShowDetailsURL = Environment.tvShowDetailsURL(tvShowID: tvShowID)
+        self.tvShowDetailsURL = Constants.tvShowDetailsURL(tvShowID: tvShowID)
     }
 
     convenience init(
         networkingManager: NetworkingManagerProtocol,
         tvShowID: Int?
     ) {
-        let tvShowDetailsURL = Environment.tvShowDetailsURL(tvShowID: tvShowID)
+        let tvShowDetailsURL = Constants.tvShowDetailsURL(tvShowID: tvShowID)
         self.init(networkingManager: networkingManager, tvShowID: tvShowID, tvShowDetailsURL: tvShowDetailsURL)
     }
 
