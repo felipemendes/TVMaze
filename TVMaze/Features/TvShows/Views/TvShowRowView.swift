@@ -59,7 +59,7 @@ extension TvShowRowView {
 extension TvShowRowView {
     @ViewBuilder private var content: some View {
         VStack(alignment: .leading) {
-            Text(tvShow.name ?? "")
+            Text(tvShow.name ?? "Unknown TV Show")
                 .font(.headline)
                 .foregroundStyle(Color.theme.accent)
                 .lineLimit(1)
@@ -86,7 +86,7 @@ extension TvShowRowView {
 
             Divider()
 
-            Text((tvShow.summary ?? "").strippingHTML)
+            Text((tvShow.summary ?? "Unknown Summary").strippingHTML)
                 .font(.subheadline)
                 .multilineTextAlignment(.leading)
                 .lineLimit(3)

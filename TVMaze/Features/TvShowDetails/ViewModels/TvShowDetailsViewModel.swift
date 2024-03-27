@@ -28,8 +28,9 @@ final class TvShowDetailsViewModel: ObservableObject, TvShowDetailsViewModelProt
     ) {
         self.tvShowDetailsDataService = tvShowDetailsDataService
         self.tvShow = tvShow
-
         addSubscribers()
+
+        reloadData()
     }
 
     // MARK: - Public API
@@ -58,21 +59,21 @@ final class TvShowDetailsViewModel: ObservableObject, TvShowDetailsViewModelProt
                 case let .failure(error): self?.state = .error(error.localizedDescription)
                 }
             }, receiveValue: { [weak self] response in
-                guard let self else { return }
+                guard let self, let response else { return }
                 self.groupEpisodesBySeason(tvShow: response)
             })
             .store(in: &cancellables)
     }
 
-    private func groupEpisodesBySeason(tvShow: TvShow?) {
+    private func groupEpisodesBySeason(tvShow: TvShow) {
         self.tvShow = tvShow
 
-        if let episodes = tvShow?.embedded?.episodes {
-            self.episodesBySeason = Dictionary(grouping: episodes) { $0.season ?? 0 }
+        if let episodes = tvShow.embedded?.episodes {
+            episodesBySeason = Dictionary(grouping: episodes) { $0.season ?? 0 }
         } else {
-            self.episodesBySeason = [:]
+            episodesBySeason = [:]
         }
 
-        self.state = .content
+        state = .content
     }
 }

@@ -37,11 +37,6 @@ final class TvShowsSearchViewModel: ObservableObject {
     }
 
     func reloadData() {
-        guard !searchTerm.isEmpty else {
-            state = .content
-            return
-        }
-
         tvShowDataService.updateSearchTerm(searchTerm)
     }
 
@@ -52,7 +47,7 @@ final class TvShowsSearchViewModel: ObservableObject {
 
     private func addSubscribers() {
         tvShowDataService.$tvShowsPublisher
-            .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(1.0), scheduler: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
                 switch completion {
                 case .finished: self?.state = .content

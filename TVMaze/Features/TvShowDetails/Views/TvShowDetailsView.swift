@@ -26,15 +26,12 @@ struct TvShowDetailsView: View {
                 Text(errorMessage)
             }
         }
-        .onAppear {
-            viewModel.reloadData()
-        }
     }
 }
 
 extension TvShowDetailsView {
-    private var tvShowContent: some View {
-        VStack {
+    @ViewBuilder private var tvShowContent: some View {
+        VStack(spacing: 20) {
             TvShowDetailsHeader(
                 viewModel: viewModel,
                 viewModelFactory: _viewModelFactory)

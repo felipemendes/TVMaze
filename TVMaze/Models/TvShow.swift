@@ -17,9 +17,12 @@ import Foundation
  */
 
 struct GlobalTvShow: Identifiable, Codable {
-    let id: Int?
     let score: Double?
     let show: TvShow?
+
+    var id: String {
+        UUID().uuidString
+    }
 }
 
 struct TvShow: Identifiable, Codable {
