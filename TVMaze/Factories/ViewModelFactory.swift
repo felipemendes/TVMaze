@@ -14,6 +14,7 @@ class ViewModelFactory: ObservableObject {
 
     let networkingManager = NetworkingManager()
     let localFileManager = LocalFileManager()
+    let tvShowLocalDataService = TvShowLocalDataService()
 
     // MARK: - TV Shows
 
@@ -39,6 +40,7 @@ class ViewModelFactory: ObservableObject {
             tvShowID: tvShow?.id)
         return TvShowDetailsViewModel(
             tvShowDetailsDataService: tvShowDetailsDataService,
+            tvShowLocalDataService: tvShowLocalDataService,
             tvShow: tvShow)
     }
 

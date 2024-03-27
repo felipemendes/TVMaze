@@ -22,12 +22,35 @@ struct TvShowDetailsView: View {
                     tvShowContent
                 }
                 .navigationTitle(viewModel.tvShow?.name ?? "Details")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        favoriteNavBarButton
+                    }
+                }
             case let .error(errorMessage):
                 Text(errorMessage)
             }
         }
     }
 }
+
+// MARK: - Search
+
+extension TvShowDetailsView {
+    private var favoriteNavBarButton: some View {
+        Button(action: {
+            if let tvShow = viewModel.tvShow {
+                viewModel.updateFavorite(tvShow: tvShow)
+            }
+        }, label: {
+            Image(systemName: viewModel.isFavorite ? "star.fill" : "star")
+                .foregroundStyle(Color.theme.accent)
+        })
+        .font(.headline)
+    }
+}
+
+// MARK: - Content
 
 extension TvShowDetailsView {
     @ViewBuilder private var tvShowContent: some View {
