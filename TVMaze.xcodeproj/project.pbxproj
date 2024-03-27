@@ -49,6 +49,8 @@
 		0249E8202BB3B6B100BBC79B /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E81F2BB3B6B100BBC79B /* SearchBarView.swift */; };
 		0249E8222BB3BA4500BBC79B /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E8212BB3BA4500BBC79B /* UIApplication+Extension.swift */; };
 		028B42D12BB3D421005201F7 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028B42D02BB3D421005201F7 /* String+Extensions.swift */; };
+		02CD76422BB48C4D00BDEB67 /* TvShowContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02CD76402BB48C4D00BDEB67 /* TvShowContainer.xcdatamodeld */; };
+		02CD76442BB48D4700BDEB67 /* TvShowLocalDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CD76432BB48D4700BDEB67 /* TvShowLocalDataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +108,8 @@
 		0249E81F2BB3B6B100BBC79B /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		0249E8212BB3BA4500BBC79B /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		028B42D02BB3D421005201F7 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		02CD76412BB48C4D00BDEB67 /* TvShowContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TvShowContainer.xcdatamodel; sourceTree = "<group>"; };
+		02CD76432BB48D4700BDEB67 /* TvShowLocalDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvShowLocalDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				0249E7A72BB2158900BBC79B /* TvShowsRemoteDataService.swift */,
+				02CD76432BB48D4700BDEB67 /* TvShowLocalDataService.swift */,
 				0249E81A2BB3A98E00BBC79B /* TvShowsSearchRemoteDataService.swift */,
 				0249E7F82BB29E6B00BBC79B /* TvShowDetailsRemoteDataService.swift */,
 				0249E7E32BB23C2D00BBC79B /* ImagesDataService.swift */,
@@ -227,6 +232,7 @@
 				0249E7AA2BB2158900BBC79B /* Schedule.swift */,
 				0249E7A92BB2158900BBC79B /* Image.swift */,
 				0249E8012BB334B000BBC79B /* EmbeddedEpisodes.swift */,
+				02CD76402BB48C4D00BDEB67 /* TvShowContainer.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -518,6 +524,7 @@
 				0249E8042BB368A500BBC79B /* TvShowDetailsHeader.swift in Sources */,
 				0249E81E2BB3B2DF00BBC79B /* TvShowSearchView.swift in Sources */,
 				0249E8202BB3B6B100BBC79B /* SearchBarView.swift in Sources */,
+				02CD76442BB48D4700BDEB67 /* TvShowLocalDataService.swift in Sources */,
 				0249E7F92BB29E6B00BBC79B /* TvShowDetailsRemoteDataService.swift in Sources */,
 				0249E8132BB39E2F00BBC79B /* XMarkButton.swift in Sources */,
 				0249E7942BB1FCCF00BBC79B /* ColorTheme.swift in Sources */,
@@ -531,6 +538,7 @@
 				0249E8222BB3BA4500BBC79B /* UIApplication+Extension.swift in Sources */,
 				0249E7B22BB21A8100BBC79B /* Constants.swift in Sources */,
 				0249E7AD2BB2158900BBC79B /* TvShowsRemoteDataService.swift in Sources */,
+				02CD76422BB48C4D00BDEB67 /* TvShowContainer.xcdatamodeld in Sources */,
 				0249E8022BB334B000BBC79B /* EmbeddedEpisodes.swift in Sources */,
 				0249E8192BB3A81200BBC79B /* TvShowsSearchViewModel.swift in Sources */,
 				0249E81B2BB3A98E00BBC79B /* TvShowsSearchRemoteDataService.swift in Sources */,
@@ -842,6 +850,20 @@
 			productName = TVMazeServiceKit;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		02CD76402BB48C4D00BDEB67 /* TvShowContainer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				02CD76412BB48C4D00BDEB67 /* TvShowContainer.xcdatamodel */,
+			);
+			currentVersion = 02CD76412BB48C4D00BDEB67 /* TvShowContainer.xcdatamodel */;
+			name = TvShowContainer.xcdatamodeld;
+			path = /Users/felipemendes/Projects/TVMaze/TVMaze/Models/TvShowContainer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0249E76F2BB1F71800BBC79B /* Project object */;
 }
