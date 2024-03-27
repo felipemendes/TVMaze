@@ -12,8 +12,15 @@ import Foundation
 
  TV Shows URL: https://api.tvmaze.com/shows
  Episodes URL: https://api.tvmaze.com/shows/1?embed=episodes
+ Search URL: https://api.tvmaze.com/search/shows?q=Friends
 
  */
+
+struct GlobalTvShow: Identifiable, Codable {
+    let id: Int?
+    let score: Double?
+    let show: TvShow?
+}
 
 struct TvShow: Identifiable, Codable {
     let id: Int

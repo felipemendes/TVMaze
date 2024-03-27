@@ -22,6 +22,15 @@ class ViewModelFactory: ObservableObject {
         return TvShowsViewModel(tvShowDataService: tvShowsDataService)
     }
 
+    // MARK: - TV Shows
+
+    func makeTvShowsSearchViewModel(searchTerm: String) -> TvShowsSearchViewModel {
+        let tvShowsDataService = TvShowsSearchRemoteDataService(
+            networkingManager: networkingManager,
+            searchTerm: searchTerm)
+        return TvShowsSearchViewModel(tvShowDataService: tvShowsDataService)
+    }
+
     // MARK: - TV Show Details
 
     func makeTvShowDetailsViewModel(tvShow: TvShow?) -> TvShowDetailsViewModel {

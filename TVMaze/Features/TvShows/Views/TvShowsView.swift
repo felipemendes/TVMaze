@@ -13,6 +13,7 @@ struct TvShowsView: View {
 
     @State private var selectedTvShow: TvShow? = nil
     @State private var tvShowDetailView: Bool = false
+    @State private var isSearchSheetPresented = false
 
     var body: some View {
 
@@ -54,8 +55,7 @@ extension TvShowsView {
         .navigationTitle("TV Shows")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Image(systemName: "magnifyingglass")
-                    .foregroundStyle(Color.theme.accent)
+                searchNavBarButton
             }
         }
         .background(
@@ -66,6 +66,24 @@ extension TvShowsView {
                     EmptyView()
                 }
         )
+    }
+}
+
+// MARK: - Search
+
+extension TvShowsView {
+    private var searchNavBarButton: some View {
+        Button(action: {
+            isSearchSheetPresented.toggle()
+        }, label: {
+            Image(systemName: "magnifyingglass")
+                .foregroundStyle(Color.theme.accent)
+        })
+        .font(.headline)
+        .sheet(isPresented: $isSearchSheetPresented) {
+            TvShowSearchView(viewModel: viewModelFactory.makeTvShowsSearchViewModel(searchTerm: ""))
+                .environmentObject(viewModelFactory)
+        }
     }
 }
 

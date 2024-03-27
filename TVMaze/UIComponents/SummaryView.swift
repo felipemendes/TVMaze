@@ -18,7 +18,7 @@ struct SummaryView: View {
                 .bold()
                 .frame(maxWidth: .infinity, alignment: .leading)
 
-            Text((summary ?? "Unknown Episode").strippingHTML)
+            Text(summary ?? "Unknown Summary")
                 .font(.body)
                 .multilineTextAlignment(.leading)
                 .foregroundStyle(Color.theme.secondaryText)
