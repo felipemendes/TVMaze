@@ -58,6 +58,12 @@ class ViewModelFactory: ObservableObject {
     // MARK: - Episode Details
 
     func makeEpisodeDetailsViewModel(episode: TvShow.Embedded.Episode?) -> EpisodeDetailsViewModel {
-        return EpisodeDetailsViewModel(episode: episode)
+        EpisodeDetailsViewModel(episode: episode)
+    }
+
+    // MARK: - Favorites
+
+    func makeTvShowsFavoritesViewModel() -> TvShowsFavoritesViewModel {
+        TvShowsFavoritesViewModel(tvShowLocalDataService: tvShowLocalDataService)
     }
 }

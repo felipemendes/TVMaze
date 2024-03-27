@@ -51,6 +51,7 @@
 		028B42D12BB3D421005201F7 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028B42D02BB3D421005201F7 /* String+Extensions.swift */; };
 		02CD76422BB48C4D00BDEB67 /* TvShowContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02CD76402BB48C4D00BDEB67 /* TvShowContainer.xcdatamodeld */; };
 		02CD76442BB48D4700BDEB67 /* TvShowLocalDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CD76432BB48D4700BDEB67 /* TvShowLocalDataService.swift */; };
+		02CD76492BB4A64D00BDEB67 /* TvShowsFavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CD76482BB4A64D00BDEB67 /* TvShowsFavoritesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,7 @@
 		028B42D02BB3D421005201F7 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		02CD76412BB48C4D00BDEB67 /* TvShowContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TvShowContainer.xcdatamodel; sourceTree = "<group>"; };
 		02CD76432BB48D4700BDEB67 /* TvShowLocalDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvShowLocalDataService.swift; sourceTree = "<group>"; };
+		02CD76482BB4A64D00BDEB67 /* TvShowsFavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvShowsFavoritesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +271,7 @@
 				0249E7CE2BB2247200BBC79B /* TvShows */,
 				0249E8162BB3A7EA00BBC79B /* TvShowsSearch */,
 				0249E7F32BB29D9000BBC79B /* TvShowDetails */,
+				02CD76452BB4A5F400BDEB67 /* Favorites */,
 				0249E80B2BB393DD00BBC79B /* Episode */,
 			);
 			path = Features;
@@ -403,6 +406,30 @@
 			isa = PBXGroup;
 			children = (
 				0249E81D2BB3B2DF00BBC79B /* TvShowSearchView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		02CD76452BB4A5F400BDEB67 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				02CD76462BB4A61100BDEB67 /* ViewModels */,
+				02CD76472BB4A61700BDEB67 /* Views */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		02CD76462BB4A61100BDEB67 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				02CD76482BB4A64D00BDEB67 /* TvShowsFavoritesViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		02CD76472BB4A61700BDEB67 /* Views */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -550,6 +577,7 @@
 				0249E7F22BB2783600BBC79B /* ViewState.swift in Sources */,
 				0249E7902BB1FBEF00BBC79B /* Color+Extensions.swift in Sources */,
 				0249E7F72BB29DBE00BBC79B /* TvShowDetailsViewModel.swift in Sources */,
+				02CD76492BB4A64D00BDEB67 /* TvShowsFavoritesViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
