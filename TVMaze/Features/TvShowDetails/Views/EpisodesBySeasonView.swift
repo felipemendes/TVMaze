@@ -32,7 +32,6 @@ struct EpisodesBySeasonView: View {
     }
 }
 
-
 #Preview(traits: .sizeThatFitsLayout) {
     EpisodesBySeasonView(viewModel: ViewModelFactory().makeTvShowDetailsViewModel(
         tvShow: TvShow(
@@ -53,6 +52,7 @@ struct EpisodesBySeasonView: View {
                     TvShow.Embedded.Episode(
                         id: 1,
                         name: "Mock Episode 1",
+                        summary: "Mock Summary 1",
                         season: 1,
                         number: 1,
                         image: TvShow.Image(

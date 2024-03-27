@@ -43,4 +43,10 @@ class ViewModelFactory: ObservableObject {
             id: id)
         return ImageViewModel(imagesDataService: imagesDataService)
     }
+
+    // MARK: - Episode Details
+
+    func makeEpisodeDetailsViewModel(episode: TvShow.Embedded.Episode?) -> EpisodeDetailsViewModel {
+        return EpisodeDetailsViewModel(episode: episode)
+    }
 }

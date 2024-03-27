@@ -14,6 +14,7 @@ extension TvShow {
         struct Episode: Codable, Identifiable {
             let id: Int
             let name: String?
+            let summary: String?
             let season, number: Int?
             let image: TvShow.Image?
         }

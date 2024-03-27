@@ -69,6 +69,8 @@ extension TvShowsView {
     }
 }
 
+// MARK: - Segue
+
 extension TvShowsView {
     private func segue(tvShow: TvShow) {
         selectedTvShow = tvShow

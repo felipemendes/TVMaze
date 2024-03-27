@@ -38,27 +38,11 @@ extension TvShowDetailsView {
             TvShowDetailsHeader(
                 viewModel: viewModel,
                 viewModelFactory: _viewModelFactory)
-            summary
+            SummaryView(summary: viewModel.tvShow?.summary)
             EpisodesBySeasonView(viewModel: viewModel)
                 .environmentObject(viewModelFactory)
         }
         .padding()
-    }
-}
-
-// MARK: - Summary
-
-extension TvShowDetailsView {
-    @ViewBuilder private var summary: some View {
-        Text("Summary")
-            .foregroundStyle(Color.theme.accent)
-            .bold()
-            .frame(maxWidth: .infinity, alignment: .leading)
-
-        Text((viewModel.tvShow?.summary ?? "").strippingHTML)
-            .font(.body)
-            .multilineTextAlignment(.leading)
-            .foregroundStyle(Color.theme.secondaryText)
     }
 }
 
