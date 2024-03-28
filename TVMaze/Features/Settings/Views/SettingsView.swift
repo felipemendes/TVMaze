@@ -22,7 +22,7 @@ struct SettingsView: View {
                     Text("Enable Biometrics")
                 }
                 .onChange(of: viewModel.isBiometricsEnabled) { newValue in
-                    viewModel.toggleBiometricsEnabled()
+                    viewModel.toggleBiometricsEnabled(newValue)
                 }
 
                 Button(viewModel.isPINSet ? "Change PIN" : "Set PIN") {

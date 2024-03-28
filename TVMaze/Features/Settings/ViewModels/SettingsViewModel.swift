@@ -26,9 +26,9 @@ class SettingsViewModel: ObservableObject {
         self.isPINSet = biometricAuthManager.isPINSet()
     }
 
-    func toggleBiometricsEnabled() {
-        isBiometricsEnabled.toggle()
-        UserDefaults.standard.set(isBiometricsEnabled, forKey: biometricsPreferenceKey)
+    func toggleBiometricsEnabled(_ newValue: Bool) {
+        isBiometricsEnabled = newValue
+        UserDefaults.standard.set(newValue, forKey: biometricsPreferenceKey)
         UserDefaults.standard.synchronize()
     }
 
