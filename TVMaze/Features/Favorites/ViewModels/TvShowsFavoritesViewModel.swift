@@ -35,6 +35,7 @@ final class TvShowsFavoritesViewModel: ObservableObject, TvShowsFavoritesViewMod
     @Published var state: ViewState = .loading
 
     func reloadData() {
+        state = .loading
         tvShowDataService.fetchTvShows()
     }
 
@@ -56,13 +57,15 @@ final class TvShowsFavoritesViewModel: ObservableObject, TvShowsFavoritesViewMod
             .combineLatest(tvShowLocalDataService.$savedEntities)
             .map(mapFavorites)
             .sink { [weak self] response in
-                guard let self, let response else {
+                guard let response else {
                     self?.state = .error("Unknown Favorites")
                     return
                 }
 
-                self.allFavorites = response
-                self.state = .content
+                let state: ViewState = response.isEmpty ? .empty("No TV Shows to Display") : .content
+                self?.state = state
+
+                self?.allFavorites = response
             }
             .store(in: &cancellables)
     }

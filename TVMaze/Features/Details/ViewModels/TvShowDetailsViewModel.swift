@@ -48,6 +48,7 @@ final class TvShowDetailsViewModel: ObservableObject, TvShowDetailsViewModelProt
     @Published var isFavorite: Bool = false
 
     func reloadData() {
+        state = .loading
         tvShowDetailsDataService.fetchDetails()
     }
 
@@ -62,8 +63,13 @@ final class TvShowDetailsViewModel: ObservableObject, TvShowDetailsViewModelProt
     private func addSubscribers() {
         tvShowDetailsDataService.$tvShowDetailsPublisher
             .sink { [weak self] response in
-                guard let self, let response else { return }
-                self.groupEpisodesBySeason(tvShow: response)
+                guard let response else {
+                    self?.state = .empty("No TV Show to Display")
+                    return
+                }
+
+                self?.groupEpisodesBySeason(tvShow: response)
+                self?.state = .content
             }
             .store(in: &cancellables)
 

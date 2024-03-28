@@ -34,7 +34,7 @@ struct SeasonView: View {
                 }
             }
             .sheet(item: $episodeSelected) { episode in
-                EpisodeDetailsView(episode: $episodeSelected)
+                EpisodeDetailsView(viewModel: viewModelFactory.makeEpisodeDetailsViewModel(episode: episode), episode: $episodeSelected)
             }
         }
     }

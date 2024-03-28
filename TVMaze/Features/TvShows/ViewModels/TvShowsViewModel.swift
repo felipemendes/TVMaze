@@ -33,6 +33,7 @@ final class TvShowsViewModel: ObservableObject, TvShowsViewModelProtocol {
     @Published var state: ViewState = .loading
 
     func reloadData() {
+        state = .loading
         tvShowDataService.fetchTvShows()
     }
 
@@ -44,13 +45,9 @@ final class TvShowsViewModel: ObservableObject, TvShowsViewModelProtocol {
     private func addSubscribers() {
         tvShowDataService.$tvShowsPublisher
             .sink { [weak self] response in
-                guard let self else {
-                    self?.state = .error("Unknown Favorites")
-                    return
-                }
-
-                self.allTvShows = response
-                self.state = .content
+                let state: ViewState = response.isEmpty ? .empty("No TV Shows to Display") : .content
+                self?.state = state
+                self?.allTvShows = response
             }
             .store(in: &cancellables)
     }

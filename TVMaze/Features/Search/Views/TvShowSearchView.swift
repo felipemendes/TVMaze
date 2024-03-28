@@ -18,40 +18,25 @@ struct TvShowSearchView: View {
 
     var body: some View {
 
-        switch viewModel.state {
-        case .loading:
-            loadingView
-        case .content:
-            tvShowsContent
-        case let .error(errorMessage):
-            Text(errorMessage)
-        case let .empty(message):
-            Text(message)
-        }
-    }
-}
-
-// MARK: - All TV Shows
-
-extension TvShowSearchView {
-    @ViewBuilder private var tvShowsContent: some View {
         NavigationView {
             VStack {
                 SearchBarView(searchTerm: $viewModel.searchTerm)
 
-                List {
-                    ForEach(viewModel.allGlobalTvShows) { tvShow in
-                        Text(tvShow.show?.name ?? "Unknown TV Show")
-                            .font(.subheadline)
-                            .foregroundStyle(Color.theme.accent)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .onTapGesture {
-                                segue(tvShow: tvShow)
-                            }
-                    }
-                    .listRowSeparator(.hidden)
+                switch viewModel.state {
+                case .loading:
+                    loadingView
+                case .content:
+                    tvShowsContent
+                case let .error(errorMessage):
+                    Text(errorMessage)
+                case let .empty(message):
+                    Text(message)
+                        .font(.caption)
+                        .foregroundStyle(Color.theme.secondaryText)
+                        .multilineTextAlignment(.center)
                 }
-                .listStyle(.plain)
+
+                Spacer()
             }
             .navigationTitle("Search TV Shows")
             .toolbar {
@@ -67,6 +52,26 @@ extension TvShowSearchView {
                         EmptyView()
                     }
             )
+        }
+        .listStyle(.plain)
+    }
+}
+
+// MARK: - All TV Shows
+
+extension TvShowSearchView {
+    @ViewBuilder private var tvShowsContent: some View {
+        List {
+            ForEach(viewModel.allGlobalTvShows) { tvShow in
+                Text(tvShow.show?.name ?? "Unknown TV Show")
+                    .font(.subheadline)
+                    .foregroundStyle(Color.theme.accent)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .onTapGesture {
+                        segue(tvShow: tvShow)
+                    }
+            }
+            .listRowSeparator(.hidden)
         }
     }
 }

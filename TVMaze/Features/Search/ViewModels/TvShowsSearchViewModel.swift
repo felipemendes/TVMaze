@@ -37,6 +37,7 @@ final class TvShowsSearchViewModel: ObservableObject {
     }
 
     func reloadData() {
+        state = .loading
         tvShowDataService.updateSearchTerm(searchTerm)
     }
 
@@ -54,8 +55,10 @@ final class TvShowsSearchViewModel: ObservableObject {
                     return
                 }
 
+                let state: ViewState = response.isEmpty ? .empty("Use the search bar above to find TV shows. Just start typing, and we'll take care of the rest!") : .content
+                self.state = state
+
                 self.allGlobalTvShows = response
-                self.state = .content
             }
             .store(in: &cancellables)
     }

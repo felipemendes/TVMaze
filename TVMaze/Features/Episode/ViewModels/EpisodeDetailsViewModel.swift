@@ -10,6 +10,7 @@ import Combine
 
 protocol EpisodeDetailsViewModelProtocol: ObservableObject {
     var episode: TvShow.Embedded.Episode? { get }
+    var state: ViewState { get }
 }
 
 final class EpisodeDetailsViewModel: ObservableObject, EpisodeDetailsViewModelProtocol {

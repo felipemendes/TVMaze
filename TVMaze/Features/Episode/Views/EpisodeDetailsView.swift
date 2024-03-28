@@ -11,12 +11,22 @@ struct EpisodeDetailsView: View {
 
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var viewModelFactory: ViewModelFactory
+    @ObservedObject var viewModel: EpisodeDetailsViewModel
     @Binding var episode: TvShow.Embedded.Episode?
 
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 0) {
-                content
+                switch viewModel.state {
+                case .loading:
+                    loadingView
+                case .content:
+                    content
+                case let .error(errorMessage):
+                    Text(errorMessage)
+                case let .empty(message):
+                    Text(message)
+                }
             }
             .padding()
             .navigationBarTitle("Episode Details")
@@ -81,6 +91,7 @@ extension EpisodeDetailsView {
                 medium: "https://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg",
                 original: "https://static.tvmaze.com/uploads/images/original_untouched/81/202627.jpg"
             ))
-        EpisodeDetailsView(episode: .constant(episode))
+        EpisodeDetailsView(
+            viewModel: ViewModelFactory().makeEpisodeDetailsViewModel(episode: nil), episode: .constant(episode))
     }
 }
