@@ -12,9 +12,16 @@ class ViewModelFactory: ObservableObject {
     
     // MARK: - Public API
 
+    let biometricAuthManager = BiometricAuthenticationManager()
     let networkingManager = NetworkingManager()
     let localFileManager = LocalFileManager()
     let tvShowLocalDataService = TvShowLocalDataService()
+
+    // MARK: - Authentication
+
+    func makeAuthenticationViewModel() -> AuthenticationViewModel {
+        AuthenticationViewModel(biometricAuthManager: biometricAuthManager)
+    }
 
     // MARK: - TV Shows
 
@@ -65,5 +72,11 @@ class ViewModelFactory: ObservableObject {
 
     func makeTvShowsFavoritesViewModel() -> TvShowsFavoritesViewModel {
         TvShowsFavoritesViewModel(tvShowLocalDataService: tvShowLocalDataService)
+    }
+
+    // MARK: - Settings
+
+    func makeSettingsViewModel() -> SettingsViewModel {
+        SettingsViewModel(biometricAuthManager: biometricAuthManager)
     }
 }

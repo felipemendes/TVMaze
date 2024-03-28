@@ -48,6 +48,13 @@
 		0249E81E2BB3B2DF00BBC79B /* TvShowSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E81D2BB3B2DF00BBC79B /* TvShowSearchView.swift */; };
 		0249E8202BB3B6B100BBC79B /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E81F2BB3B6B100BBC79B /* SearchBarView.swift */; };
 		0249E8222BB3BA4500BBC79B /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E8212BB3BA4500BBC79B /* UIApplication+Extension.swift */; };
+		024CD44A2BB50D9D005C90B7 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024CD4492BB50D9D005C90B7 /* AuthenticationView.swift */; };
+		024CD44C2BB5140C005C90B7 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024CD44B2BB5140C005C90B7 /* AppEnvironment.swift */; };
+		027C491C2BB5DE4E006BE69B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C491B2BB5DE4E006BE69B /* SettingsView.swift */; };
+		027C491E2BB5DE68006BE69B /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C491D2BB5DE68006BE69B /* SettingsViewModel.swift */; };
+		027C49202BB5DE8F006BE69B /* PINEntryModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C491F2BB5DE8F006BE69B /* PINEntryModalView.swift */; };
+		027C49222BB5DEE3006BE69B /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C49212BB5DEE3006BE69B /* AuthenticationViewModel.swift */; };
+		027C49242BB5DF14006BE69B /* PINEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C49232BB5DF14006BE69B /* PINEntryView.swift */; };
 		028B42D12BB3D421005201F7 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028B42D02BB3D421005201F7 /* String+Extensions.swift */; };
 		02CD76422BB48C4D00BDEB67 /* TvShowContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02CD76402BB48C4D00BDEB67 /* TvShowContainer.xcdatamodeld */; };
 		02CD76442BB48D4700BDEB67 /* TvShowLocalDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CD76432BB48D4700BDEB67 /* TvShowLocalDataService.swift */; };
@@ -109,6 +116,13 @@
 		0249E81D2BB3B2DF00BBC79B /* TvShowSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvShowSearchView.swift; sourceTree = "<group>"; };
 		0249E81F2BB3B6B100BBC79B /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		0249E8212BB3BA4500BBC79B /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
+		024CD4492BB50D9D005C90B7 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		024CD44B2BB5140C005C90B7 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		027C491B2BB5DE4E006BE69B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		027C491D2BB5DE68006BE69B /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		027C491F2BB5DE8F006BE69B /* PINEntryModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINEntryModalView.swift; sourceTree = "<group>"; };
+		027C49212BB5DEE3006BE69B /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		027C49232BB5DF14006BE69B /* PINEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINEntryView.swift; sourceTree = "<group>"; };
 		028B42D02BB3D421005201F7 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		02CD76412BB48C4D00BDEB67 /* TvShowContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TvShowContainer.xcdatamodel; sourceTree = "<group>"; };
 		02CD76432BB48D4700BDEB67 /* TvShowLocalDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvShowLocalDataService.swift; sourceTree = "<group>"; };
@@ -160,13 +174,12 @@
 			children = (
 				0249E77A2BB1F71800BBC79B /* TVMazeApp.swift */,
 				0249E77C2BB1F71800BBC79B /* ContentView.swift */,
-				0249E78E2BB1FBDF00BBC79B /* Extensions */,
-				0249E7922BB1FCC100BBC79B /* Helpers */,
+				024CD4482BB50D37005C90B7 /* Authentication */,
+				0249E7922BB1FCC100BBC79B /* Shared */,
 				0249E7AC2BB2158900BBC79B /* Models */,
 				0249E7FC2BB31C7300BBC79B /* Factories */,
 				0249E7A82BB2158900BBC79B /* Services */,
 				0249E7CD2BB2245A00BBC79B /* Features */,
-				0249E7E92BB24D6D00BBC79B /* UIComponents */,
 				0249E7912BB1FC3600BBC79B /* Resources */,
 				0249E7802BB1F71A00BBC79B /* Preview Content */,
 			);
@@ -200,14 +213,16 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		0249E7922BB1FCC100BBC79B /* Helpers */ = {
+		0249E7922BB1FCC100BBC79B /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				0249E78E2BB1FBDF00BBC79B /* Extensions */,
+				0249E7E92BB24D6D00BBC79B /* UIComponents */,
 				0249E7B12BB21A8100BBC79B /* Constants.swift */,
 				0249E7932BB1FCCF00BBC79B /* ColorTheme.swift */,
 				0249E7F12BB2783600BBC79B /* ViewState.swift */,
 			);
-			path = Helpers;
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		0249E7A42BB20F0900BBC79B /* Frameworks */ = {
@@ -275,6 +290,7 @@
 				0249E7F32BB29D9000BBC79B /* Details */,
 				02CD76452BB4A5F400BDEB67 /* Favorites */,
 				0249E80B2BB393DD00BBC79B /* Episode */,
+				027C49252BB5DF3C006BE69B /* Settings */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -357,7 +373,7 @@
 		0249E7FC2BB31C7300BBC79B /* Factories */ = {
 			isa = PBXGroup;
 			children = (
-				0249E7FD2BB31C8300BBC79B /* ViewModelFactory.swift */,
+				027C492A2BB5E21A006BE69B /* ViewModels */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -410,6 +426,67 @@
 				0249E81D2BB3B2DF00BBC79B /* TvShowSearchView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		024CD4482BB50D37005C90B7 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				024CD44B2BB5140C005C90B7 /* AppEnvironment.swift */,
+				027C49282BB5E1E5006BE69B /* ViewModels */,
+				027C49292BB5E1EC006BE69B /* Views */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		027C49252BB5DF3C006BE69B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				027C49262BB5DF41006BE69B /* ViewModels */,
+				027C49272BB5DF46006BE69B /* Views */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		027C49262BB5DF41006BE69B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				027C491D2BB5DE68006BE69B /* SettingsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		027C49272BB5DF46006BE69B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				027C491B2BB5DE4E006BE69B /* SettingsView.swift */,
+				027C491F2BB5DE8F006BE69B /* PINEntryModalView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		027C49282BB5E1E5006BE69B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				027C49212BB5DEE3006BE69B /* AuthenticationViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		027C49292BB5E1EC006BE69B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				024CD4492BB50D9D005C90B7 /* AuthenticationView.swift */,
+				027C49232BB5DF14006BE69B /* PINEntryView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		027C492A2BB5E21A006BE69B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0249E7FD2BB31C8300BBC79B /* ViewModelFactory.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		02CD76452BB4A5F400BDEB67 /* Favorites */ = {
@@ -508,6 +585,8 @@
 				Base,
 			);
 			mainGroup = 0249E76E2BB1F71800BBC79B;
+			packageReferences = (
+			);
 			productRefGroup = 0249E7782BB1F71800BBC79B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -550,23 +629,29 @@
 				0249E8002BB324D700BBC79B /* View+Extensions.swift in Sources */,
 				0249E77D2BB1F71800BBC79B /* ContentView.swift in Sources */,
 				0249E7AE2BB2158900BBC79B /* Image.swift in Sources */,
+				027C49222BB5DEE3006BE69B /* AuthenticationViewModel.swift in Sources */,
 				0249E7E42BB23C2D00BBC79B /* ImagesDataService.swift in Sources */,
 				0249E8042BB368A500BBC79B /* TvShowDetailsHeader.swift in Sources */,
 				0249E81E2BB3B2DF00BBC79B /* TvShowSearchView.swift in Sources */,
+				027C49242BB5DF14006BE69B /* PINEntryView.swift in Sources */,
 				0249E8202BB3B6B100BBC79B /* SearchBarView.swift in Sources */,
+				027C491C2BB5DE4E006BE69B /* SettingsView.swift in Sources */,
 				02CD76442BB48D4700BDEB67 /* TvShowLocalDataService.swift in Sources */,
 				0249E7F92BB29E6B00BBC79B /* TvShowDetailsRemoteDataService.swift in Sources */,
 				0249E8132BB39E2F00BBC79B /* XMarkButton.swift in Sources */,
 				0249E7942BB1FCCF00BBC79B /* ColorTheme.swift in Sources */,
 				0249E80A2BB383B400BBC79B /* EpisodeView.swift in Sources */,
 				02CD764B2BB4F78100BDEB67 /* TvShowsFavoritesView.swift in Sources */,
+				027C491E2BB5DE68006BE69B /* SettingsViewModel.swift in Sources */,
 				0249E7D42BB225A100BBC79B /* TvShowsViewModel.swift in Sources */,
+				024CD44A2BB50D9D005C90B7 /* AuthenticationView.swift in Sources */,
 				0249E8152BB3A09B00BBC79B /* SummaryView.swift in Sources */,
 				0249E8082BB3811800BBC79B /* SeasonView.swift in Sources */,
 				0249E7EE2BB24D8300BBC79B /* ImageViewModel.swift in Sources */,
 				0249E77B2BB1F71800BBC79B /* TVMazeApp.swift in Sources */,
 				0249E7D62BB22A5C00BBC79B /* TvShowsView.swift in Sources */,
 				0249E8222BB3BA4500BBC79B /* UIApplication+Extension.swift in Sources */,
+				027C49202BB5DE8F006BE69B /* PINEntryModalView.swift in Sources */,
 				0249E7B22BB21A8100BBC79B /* Constants.swift in Sources */,
 				0249E7AD2BB2158900BBC79B /* TvShowsRemoteDataService.swift in Sources */,
 				02CD76422BB48C4D00BDEB67 /* TvShowContainer.xcdatamodeld in Sources */,
@@ -576,6 +661,7 @@
 				0249E7AF2BB2158900BBC79B /* Schedule.swift in Sources */,
 				0249E7B02BB2158900BBC79B /* TvShow.swift in Sources */,
 				0249E7FE2BB31C8300BBC79B /* ViewModelFactory.swift in Sources */,
+				024CD44C2BB5140C005C90B7 /* AppEnvironment.swift in Sources */,
 				0249E7ED2BB24D8300BBC79B /* ImageView.swift in Sources */,
 				0249E8062BB36E1A00BBC79B /* EpisodesBySeasonView.swift in Sources */,
 				0249E7F22BB2783600BBC79B /* ViewState.swift in Sources */,
@@ -662,6 +748,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We use Face ID/Touch ID to enhance the security of your app and protect your personal information.";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -719,6 +806,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We use Face ID/Touch ID to enhance the security of your app and protect your personal information.";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
