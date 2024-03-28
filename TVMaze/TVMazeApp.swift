@@ -22,13 +22,25 @@ struct TVMazeApp: App {
             .foregroundColor: UIColor(Color.theme.accent)
         ]
     }
-    
+
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                TvShowsView(viewModel: viewModelFactory.makeTvShowsViewModel())
+            TabView {
+                NavigationView {
+                    TvShowsView(viewModel: viewModelFactory.makeTvShowsViewModel())
+                }
+                .tabItem {
+                    Label("Shows", systemImage: "tv")
+                }
+
+                NavigationView {
+                    TvShowsFavoritesView(viewModel: viewModelFactory.makeTvShowsFavoritesViewModel())
+                }
+                .tabItem {
+                    Label("Favorites", systemImage: "star.fill")
+                }
             }
+            .environmentObject(viewModelFactory)
         }
-        .environmentObject(viewModelFactory)
     }
 }
