@@ -13,8 +13,11 @@ class SettingsViewModel: ObservableObject {
     @Published var isPINSet: Bool
     @Published var pinSettingError: String?
 
-    private let biometricsPreferenceKey = "BiometricsEnabled"
     private let biometricAuthManager: BiometricAuthenticationManager
+    private let biometricsPreferenceKey = "BiometricsEnabled"
+    private let pinIsSetKey = "PINIsSet"
+    private let pinSettingErrorMessage = "PIN must be at least 4 digits."
+    private let minimumPINDigits = 4
 
     init(biometricAuthManager: BiometricAuthenticationManager) {
         self.biometricAuthManager = biometricAuthManager
@@ -26,11 +29,12 @@ class SettingsViewModel: ObservableObject {
     func toggleBiometricsEnabled() {
         isBiometricsEnabled.toggle()
         UserDefaults.standard.set(isBiometricsEnabled, forKey: biometricsPreferenceKey)
+        UserDefaults.standard.synchronize()
     }
 
     func setPIN(_ pin: String) {
-        guard pin.count >= 4 else {
-            pinSettingError = "PIN must be at least 4 digits."
+        guard pin.count >= minimumPINDigits else {
+            pinSettingError = pinSettingErrorMessage
             return
         }
 
@@ -39,12 +43,12 @@ class SettingsViewModel: ObservableObject {
         isPINSet = true
         pinSettingError = nil
 
-        UserDefaults.standard.set(true, forKey: "PINIsSet")
+        UserDefaults.standard.set(true, forKey: pinIsSetKey)
     }
 
     func removePIN() {
         biometricAuthManager.removePIN()
         isPINSet = false
-        UserDefaults.standard.set(false, forKey: "PINIsSet")
+        UserDefaults.standard.set(false, forKey: pinIsSetKey)
     }
 }

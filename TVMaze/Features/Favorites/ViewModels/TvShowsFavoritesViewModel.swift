@@ -61,10 +61,8 @@ final class TvShowsFavoritesViewModel: ObservableObject, TvShowsFavoritesViewMod
                     return
                 }
 
-                let state: ViewState = response.isEmpty ? .empty("No TV Shows to Display") : .content
-                self.state = state
-
                 self.allFavorites = response
+                self.state = .content
             }
             .store(in: &cancellables)
     }

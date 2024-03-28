@@ -45,7 +45,7 @@ struct AuthenticationView<Content: View>: View {
             }
         }
         .sheet(isPresented: $isPresentingPINView) {
-            PINEntryView(isAuthenticated: $appEnvironment.isAuthenticated, isPresented: $isPresentingPINView, viewModel: viewModel)
+            AuthenticationPINView(isAuthenticated: $appEnvironment.isAuthenticated, isPresented: $isPresentingPINView, viewModel: viewModel)
         }
     }
 }

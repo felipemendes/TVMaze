@@ -1,5 +1,5 @@
 //
-//  PINEntryModalView.swift
+//  SettingsPINView.swift
 //  TVMaze
 //
 //  Created by Felipe Mendes on 28/03/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PINEntryModalView: View {
+struct SettingsPINView: View {
     @Binding var isPresented: Bool
     @State private var pin: String = ""
     var setPINAction: (String) -> Void
@@ -35,7 +35,7 @@ struct PINEntryModalView: View {
                 }
                 .padding()
             }
-            .navigationBarTitle(Text("Set PIN"), displayMode: .inline)
+            .navigationBarTitle(Text("Set PIN"))
         }
     }
 }

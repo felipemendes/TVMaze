@@ -49,10 +49,8 @@ final class TvShowsViewModel: ObservableObject, TvShowsViewModelProtocol {
                     return
                 }
 
-                let state: ViewState = response.isEmpty ? .empty("No TV Shows to Display") : .content
-                self.state = state
-
                 self.allTvShows = response
+                self.state = .content
             }
             .store(in: &cancellables)
     }

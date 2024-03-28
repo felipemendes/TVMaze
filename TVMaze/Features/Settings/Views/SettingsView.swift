@@ -37,7 +37,7 @@ struct SettingsView: View {
         }
         .navigationBarTitle("Settings")
         .sheet(isPresented: $showingPINModal) {
-            PINEntryModalView(isPresented: $showingPINModal) { newPIN in
+            SettingsPINView(isPresented: $showingPINModal) { newPIN in
                 viewModel.setPIN(newPIN)
             }
         }

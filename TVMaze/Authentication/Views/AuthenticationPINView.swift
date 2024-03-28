@@ -1,5 +1,5 @@
 //
-//  PINEntryView.swift
+//  AuthenticationPINView.swift
 //  TVMaze
 //
 //  Created by Felipe Mendes on 28/03/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PINEntryView: View {
+struct AuthenticationPINView: View {
     @Binding var isAuthenticated: Bool
     @Binding var isPresented: Bool
     @ObservedObject var viewModel: AuthenticationViewModel
