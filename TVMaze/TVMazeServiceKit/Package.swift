@@ -14,11 +14,17 @@ let package = Package(
             name: "TVMazeServiceKit",
             targets: ["TVMazeServiceKit"]),
     ],
+    dependencies: [
+        .package(name: "KeychainSwift", url: "https://github.com/evgenyneu/keychain-swift.git", from: "21.0.0")
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "TVMazeServiceKit"),
+            name: "TVMazeServiceKit",
+            dependencies: [
+                "KeychainSwift"
+            ]),
         .testTarget(
             name: "TVMazeServiceKitTests",
             dependencies: ["TVMazeServiceKit"]),
