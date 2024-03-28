@@ -69,13 +69,12 @@ open TVMaze.xcodeproj
 - Binds to the *ViewModel* to display data and send user actions.
 
 2. **ViewModel**
-- Connected below the *View* in the diagram.
+- Connected with the *View* in the diagram.
 - Has a bidirectional connection to the *View* (via *@Published* properties in the *ViewModel* and *@ObservedObject* or *@StateObject* in the *View* for data binding).
 - Handles business logic and prepares data for display.
 - Communicates with the **Model** to retrieve or update data.
 
 3. **Model**
-- Positioned at the bottom layer in the diagram.
 - Connected to the *ViewModel*, indicating that the *ViewModel* can access or modify the Model.
 
 ### Relationships
