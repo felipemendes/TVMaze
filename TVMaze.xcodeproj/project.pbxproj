@@ -269,8 +269,8 @@
 			isa = PBXGroup;
 			children = (
 				0249E7CE2BB2247200BBC79B /* TvShows */,
-				0249E8162BB3A7EA00BBC79B /* TvShowsSearch */,
-				0249E7F32BB29D9000BBC79B /* TvShowDetails */,
+				0249E8162BB3A7EA00BBC79B /* Search */,
+				0249E7F32BB29D9000BBC79B /* Details */,
 				02CD76452BB4A5F400BDEB67 /* Favorites */,
 				0249E80B2BB393DD00BBC79B /* Episode */,
 			);
@@ -323,13 +323,13 @@
 			path = ImageView;
 			sourceTree = "<group>";
 		};
-		0249E7F32BB29D9000BBC79B /* TvShowDetails */ = {
+		0249E7F32BB29D9000BBC79B /* Details */ = {
 			isa = PBXGroup;
 			children = (
 				0249E7F42BB29D9800BBC79B /* ViewModels */,
 				0249E7F52BB29D9C00BBC79B /* Views */,
 			);
-			path = TvShowDetails;
+			path = Details;
 			sourceTree = "<group>";
 		};
 		0249E7F42BB29D9800BBC79B /* ViewModels */ = {
@@ -385,13 +385,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		0249E8162BB3A7EA00BBC79B /* TvShowsSearch */ = {
+		0249E8162BB3A7EA00BBC79B /* Search */ = {
 			isa = PBXGroup;
 			children = (
 				0249E8172BB3A80100BBC79B /* ViewModels */,
 				0249E81C2BB3B2C900BBC79B /* Views */,
 			);
-			path = TvShowsSearch;
+			path = Search;
 			sourceTree = "<group>";
 		};
 		0249E8172BB3A80100BBC79B /* ViewModels */ = {

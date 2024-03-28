@@ -48,7 +48,6 @@ final class TvShowDetailsViewModel: ObservableObject, TvShowDetailsViewModelProt
     @Published var isFavorite: Bool = false
 
     func reloadData() {
-        state = .loading
         tvShowDetailsDataService.fetchDetails()
     }
 

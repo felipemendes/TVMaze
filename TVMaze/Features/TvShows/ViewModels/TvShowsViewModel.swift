@@ -33,7 +33,6 @@ final class TvShowsViewModel: ObservableObject, TvShowsViewModelProtocol {
     @Published var state: ViewState = .loading
 
     func reloadData() {
-        state = .loading
         tvShowDataService.fetchTvShows()
     }
 
