@@ -54,6 +54,7 @@ open TVMaze.xcodeproj
 - Combine framework
 - Local Image Storage
 - View State Handling
+- Dark mode
 - Convenience Initializers
 - SOLID principles
 - Clean Code principles
