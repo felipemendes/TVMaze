@@ -29,8 +29,10 @@ struct TvShowDetailsView: View {
                 }
             case let .error(errorMessage):
                 Text(errorMessage)
+                    .captionStyle()
             case let .empty(message):
                 Text(message)
+                    .captionStyle()
             }
         }
     }

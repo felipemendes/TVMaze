@@ -29,11 +29,10 @@ struct TvShowSearchView: View {
                     tvShowsContent
                 case let .error(errorMessage):
                     Text(errorMessage)
+                        .captionStyle()
                 case let .empty(message):
                     Text(message)
-                        .font(.caption)
-                        .foregroundStyle(Color.theme.secondaryText)
-                        .multilineTextAlignment(.center)
+                        .captionStyle()
                 }
 
                 Spacer()
