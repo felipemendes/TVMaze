@@ -11,6 +11,7 @@ import TVMazeServiceKit
 @main
 struct TVMazeApp: App {
 
+    @StateObject private var appEnvironment = AppEnvironment()
     let viewModelFactory = ViewModelFactory()
 
     init() {
@@ -25,22 +26,32 @@ struct TVMazeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            TabView {
-                NavigationView {
-                    TvShowsView(viewModel: viewModelFactory.makeTvShowsViewModel())
-                }
-                .tabItem {
-                    Label("Shows", systemImage: "tv")
-                }
+            AuthenticationView(viewModel: viewModelFactory.makeAuthenticationViewModel()) {
+                TabView {
+                    NavigationView {
+                        TvShowsView(viewModel: viewModelFactory.makeTvShowsViewModel())
+                    }
+                    .tabItem {
+                        Label("Shows", systemImage: "tv")
+                    }
 
-                NavigationView {
-                    TvShowsFavoritesView(viewModel: viewModelFactory.makeTvShowsFavoritesViewModel())
+                    NavigationView {
+                        TvShowsFavoritesView(viewModel: viewModelFactory.makeTvShowsFavoritesViewModel())
+                    }
+                    .tabItem {
+                        Label("Favorites", systemImage: "star.fill")
+                    }
+
+                    NavigationView {
+                        SettingsView(viewModel: viewModelFactory.makeSettingsViewModel())
+                    }
+                    .tabItem {
+                        Label("Settings", systemImage: "gear")
+                    }
                 }
-                .tabItem {
-                    Label("Favorites", systemImage: "star.fill")
-                }
+                .environmentObject(viewModelFactory)
             }
-            .environmentObject(viewModelFactory)
+            .environmentObject(appEnvironment)
         }
     }
 }
