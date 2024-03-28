@@ -43,16 +43,17 @@ final class TvShowsViewModel: ObservableObject, TvShowsViewModelProtocol {
 
     private func addSubscribers() {
         tvShowDataService.$tvShowsPublisher
-            .sink(receiveCompletion: { [weak self] completion in
-                switch completion {
-                case .finished: self?.state = .content
-                case let .failure(error): self?.state = .error(error.localizedDescription)
+            .sink { [weak self] response in
+                guard let self else {
+                    self?.state = .error("Unknown Favorites")
+                    return
                 }
-            }, receiveValue: { [weak self] response in
-                guard let self else { return }
+
+                let state: ViewState = response.isEmpty ? .empty("No TV Shows to Display") : .content
+                self.state = state
+
                 self.allTvShows = response
-                self.state = .content
-            })
+            }
             .store(in: &cancellables)
     }
 }

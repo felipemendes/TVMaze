@@ -29,6 +29,8 @@ struct TvShowDetailsView: View {
                 }
             case let .error(errorMessage):
                 Text(errorMessage)
+            case let .empty(message):
+                Text(message)
             }
         }
     }
@@ -44,7 +46,7 @@ extension TvShowDetailsView {
             }
         }, label: {
             Image(systemName: viewModel.isFavorite ? "star.fill" : "star")
-                .foregroundStyle(Color.theme.accent)
+                .foregroundStyle(Color.yellow)
         })
         .font(.headline)
     }

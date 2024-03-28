@@ -24,6 +24,8 @@ struct TvShowsFavoritesView: View {
             tvShowsContent
         case let .error(errorMessage):
             Text(errorMessage)
+        case let .empty(message):
+            Text(message)
         }
     }
 }
@@ -38,7 +40,7 @@ extension TvShowsFavoritesView {
 
             List {
                 ForEach(viewModel.allFavorites) { tvShow in
-                    TvShowRowView(tvShow: tvShow)
+                    TvShowRowView(tvShow: tvShow, isFavorite: true)
                         .listRowInsets(EdgeInsets())
                         .onTapGesture {
                             segue(tvShow: tvShow)

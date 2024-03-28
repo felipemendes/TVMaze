@@ -8,5 +8,5 @@
 import Foundation
 
 enum ViewState {
-    case loading, content, error(String)
+    case loading, content, empty(String), error(String)
 }

@@ -11,25 +11,42 @@ struct TvShowRowView: View {
 
     @EnvironmentObject var viewModelFactory: ViewModelFactory
     @State var tvShow: TvShow
+    var isFavorite: Bool = false
 
     var body: some View {
-        HStack {
-            poster
-            content
-            Spacer()
+        ZStack(alignment: .topTrailing) {
+            HStack {
+                poster
+                content
+                Spacer()
+            }
+            .background(
+                RoundedRectangle(cornerRadius: 6)
+                    .fill(Color.theme.background)
+                    .shadow(
+                        color: Color.theme.accent.opacity(0.1),
+                        radius: 10,
+                        x: 0,
+                        y: 0
+                    )
+            )
+            .frame(maxWidth: .infinity)
+            .padding(8)
+
+            if isFavorite {
+                favorite
+            }
         }
-        .background(
-            RoundedRectangle(cornerRadius: 6)
-                .fill(Color.theme.background)
-                .shadow(
-                    color: Color.theme.accent.opacity(0.1),
-                    radius: 10,
-                    x: 0,
-                    y: 0
-                )
-        )
-        .frame(maxWidth: .infinity)
-        .padding(8)
+    }
+}
+
+// MARK: - Favorite
+
+extension TvShowRowView {
+    private var favorite: some View {
+        Image(systemName: "star.fill")
+            .foregroundStyle(Color.yellow)
+            .offset(x: -20, y: 20)
     }
 }
 

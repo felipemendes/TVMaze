@@ -48,16 +48,15 @@ final class TvShowsSearchViewModel: ObservableObject {
     private func addSubscribers() {
         tvShowDataService.$tvShowsPublisher
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
-            .sink(receiveCompletion: { [weak self] completion in
-                switch completion {
-                case .finished: self?.state = .content
-                case let .failure(error): self?.state = .error(error.localizedDescription)
+            .sink { [weak self] response in
+                guard let self else {
+                    self?.state = .error("Unknown Favorites")
+                    return
                 }
-            }, receiveValue: { [weak self] response in
-                guard let self else { return }
+
                 self.allGlobalTvShows = response
                 self.state = .content
-            })
+            }
             .store(in: &cancellables)
     }
 }

@@ -61,15 +61,10 @@ final class TvShowDetailsViewModel: ObservableObject, TvShowDetailsViewModelProt
 
     private func addSubscribers() {
         tvShowDetailsDataService.$tvShowDetailsPublisher
-            .sink(receiveCompletion: { [weak self] completion in
-                switch completion {
-                case .finished: self?.state = .content
-                case let .failure(error): self?.state = .error(error.localizedDescription)
-                }
-            }, receiveValue: { [weak self] response in
+            .sink { [weak self] response in
                 guard let self, let response else { return }
                 self.groupEpisodesBySeason(tvShow: response)
-            })
+            }
             .store(in: &cancellables)
 
         tvShowLocalDataService.$savedEntities
