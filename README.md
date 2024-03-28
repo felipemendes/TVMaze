@@ -116,6 +116,7 @@ open TVMaze.xcodeproj
 
 ## Roadmap: Enhancements and Features
 
+- Create a people search with person details
 - HTML Content Sanitization
 - Pagination Support
 - Improve Custom UI Modifiers
