@@ -11,7 +11,10 @@ import TVMazeServiceKit
 
 protocol TvShowsFavoritesViewModelProtocol {
     var allTvShows: [TvShow] { get }
+    var allFavorites: [TvShow] { get }
     var state: ViewState { get }
+
+    func reloadData()
 }
 
 final class TvShowsFavoritesViewModel: ObservableObject, TvShowsFavoritesViewModelProtocol {
@@ -28,6 +31,7 @@ final class TvShowsFavoritesViewModel: ObservableObject, TvShowsFavoritesViewMod
     // MARK: - Public API
 
     @Published var allTvShows: [TvShow] = []
+    @Published var allFavorites: [TvShow] = []
     @Published var state: ViewState = .loading
 
     func reloadData() {
@@ -51,15 +55,14 @@ final class TvShowsFavoritesViewModel: ObservableObject, TvShowsFavoritesViewMod
         $allTvShows
             .combineLatest(tvShowLocalDataService.$savedEntities)
             .map(mapFavorites)
-            .sink(receiveCompletion: { [weak self] completion in
-                switch completion {
-                case .finished: self?.state = .content
-                case let .failure(error): self?.state = .error(error.localizedDescription)
+            .sink { [weak self] response in
+                guard let self, let response else {
+                    self?.state = .error("Unknown Favorites")
+                    return
                 }
-            }, receiveValue: { [weak self] response in
-                guard let self, let response else { return }
-                self.allTvShows = response
-            })
+                self.allFavorites = response
+                self.state = .content
+            }
             .store(in: &cancellables)
     }
 
