@@ -52,6 +52,7 @@ class TvShowDetailsRemoteDataService: TvShowDetailsRemoteDataServiceProtocol {
 
         tvShowDetailsSubscription = networkingManager.download(url: tvShowDetailsURL)
             .decode(type: TvShow.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: networkingManager.handleCompletion, receiveValue: { [weak self] response in
                 guard let self else { return }
                 self.tvShowDetailsPublisher = response

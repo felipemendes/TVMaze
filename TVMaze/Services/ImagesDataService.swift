@@ -62,6 +62,7 @@ final class ImagesDataService: ImagesDataServiceProtocol {
 
         imageSubscription = networkingManager.download(url: url)
             .tryMap { UIImage(data: $0) }
+            .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: networkingManager.handleCompletion, receiveValue: { [weak self] response in
                 guard let self = self,
                       let downloadedImage = response else { return }

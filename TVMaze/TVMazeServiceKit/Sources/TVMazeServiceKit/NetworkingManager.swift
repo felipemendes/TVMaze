@@ -25,9 +25,7 @@ public final class NetworkingManager: NetworkingManagerProtocol {
 
     public func download(url: URL) -> AnyPublisher<Data, Error> {
         return session.dataTaskPublisher(for: url)
-            .subscribe(on: DispatchQueue.global(qos: .default))
             .tryMap { try self.handleURLResponse(output: $0, url: url) }
-            .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
 
