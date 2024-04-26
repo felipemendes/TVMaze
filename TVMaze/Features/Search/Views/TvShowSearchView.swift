@@ -13,12 +13,9 @@ struct TvShowSearchView: View {
     @EnvironmentObject var viewModelFactory: ViewModelFactory
     @Environment(\.dismiss) var dismiss
 
-    @State private var selectedTvShow: GlobalTvShow? = nil
-    @State private var tvShowDetailView: Bool = false
-
     var body: some View {
 
-        NavigationView {
+        NavigationStack {
             ZStack {
                 Color.theme.background
                     .ignoresSafeArea()
@@ -47,17 +44,8 @@ struct TvShowSearchView: View {
                         XMarkButton(dismiss: _dismiss)
                     }
                 }
-                .background(
-                    NavigationLink(
-                        destination: TvShowDetailsView(viewModel: viewModelFactory.makeTvShowDetailsViewModel(tvShow: $selectedTvShow.wrappedValue?.show))
-                            .environmentObject(viewModelFactory),
-                        isActive: $tvShowDetailView) {
-                            EmptyView()
-                        }
-                )
             }
         }
-        .listStyle(.plain)
     }
 }
 
@@ -67,26 +55,19 @@ extension TvShowSearchView {
     @ViewBuilder private var tvShowsContent: some View {
         List {
             ForEach(viewModel.allGlobalTvShows) { tvShow in
-                Text(tvShow.show?.name ?? "Unknown TV Show")
-                    .font(.subheadline)
-                    .foregroundStyle(Color.theme.accent)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .onTapGesture {
-                        segue(tvShow: tvShow)
-                    }
+                NavigationLink {
+                    TvShowDetailsView(viewModel: viewModelFactory.makeTvShowDetailsViewModel(tvShow: tvShow.show))
+                } label: {
+                    Text(tvShow.show?.name ?? "Unknown TV Show")
+                        .font(.subheadline)
+                        .foregroundStyle(Color.theme.accent)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .environmentObject(viewModelFactory)
+                .listRowBackground(Color.theme.background)
             }
-            .listRowSeparator(.hidden)
-            .listRowBackground(Color.theme.background)
         }
-    }
-}
-
-// MARK: - Segue
-
-extension TvShowSearchView {
-    private func segue(tvShow: GlobalTvShow) {
-        selectedTvShow = tvShow
-        tvShowDetailView.toggle()
+        .listStyle(.plain)
     }
 }
 

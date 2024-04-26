@@ -21,7 +21,7 @@ struct SettingsView: View {
                 Toggle(isOn: $viewModel.isBiometricsEnabled) {
                     Text("Enable Biometrics")
                 }
-                .onChange(of: viewModel.isBiometricsEnabled) { newValue in
+                .onChange(of: viewModel.isBiometricsEnabled, initial: false) { _, newValue in
                     viewModel.toggleBiometricsEnabled(newValue)
                 }
 

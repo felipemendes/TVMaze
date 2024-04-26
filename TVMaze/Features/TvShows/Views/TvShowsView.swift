@@ -11,8 +11,6 @@ struct TvShowsView: View {
     @ObservedObject var viewModel: TvShowsViewModel
     @EnvironmentObject var viewModelFactory: ViewModelFactory
 
-    @State private var selectedTvShow: TvShow? = nil
-    @State private var tvShowDetailView: Bool = false
     @State private var isSearchSheetPresented = false
 
     var body: some View {
@@ -42,15 +40,21 @@ extension TvShowsView {
 
             List {
                 ForEach(viewModel.allTvShows) { tvShow in
-                    TvShowRowView(tvShow: tvShow)
-                        .listRowInsets(EdgeInsets())
-                        .onTapGesture {
-                            segue(tvShow: tvShow)
+                    ZStack {
+                        TvShowRowView(tvShow: tvShow)
+
+                        NavigationLink {
+                            TvShowDetailsView(viewModel: viewModelFactory.makeTvShowDetailsViewModel(tvShow: tvShow))
+                        } label: {
+                            EmptyView()
                         }
-                        .listRowBackground(Color.theme.background)
+                        .opacity(0.0)
                         .environmentObject(viewModelFactory)
+                    }
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(EdgeInsets())
+                    .listRowBackground(Color.theme.background)
                 }
-                .listRowSeparator(.hidden)
             }
             .listStyle(.plain)
             .refreshable {
@@ -63,14 +67,6 @@ extension TvShowsView {
                 searchNavBarButton
             }
         }
-        .background(
-            NavigationLink(
-                destination: TvShowDetailsView(viewModel: viewModelFactory.makeTvShowDetailsViewModel(tvShow: $selectedTvShow.wrappedValue))
-                    .environmentObject(viewModelFactory),
-                isActive: $tvShowDetailView) {
-                    EmptyView()
-                }
-        )
     }
 }
 
@@ -89,15 +85,6 @@ extension TvShowsView {
             TvShowSearchView(viewModel: viewModelFactory.makeTvShowsSearchViewModel(searchTerm: ""))
                 .environmentObject(viewModelFactory)
         }
-    }
-}
-
-// MARK: - Segue
-
-extension TvShowsView {
-    private func segue(tvShow: TvShow) {
-        selectedTvShow = tvShow
-        tvShowDetailView.toggle()
     }
 }
 
