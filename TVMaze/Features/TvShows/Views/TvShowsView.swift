@@ -47,6 +47,7 @@ extension TvShowsView {
                         .onTapGesture {
                             segue(tvShow: tvShow)
                         }
+                        .listRowBackground(Color.theme.background)
                         .environmentObject(viewModelFactory)
                 }
                 .listRowSeparator(.hidden)

@@ -18,6 +18,7 @@ struct SettingsPINView: View {
                 SecureField("Enter PIN", text: $pin)
                     .padding()
                     .keyboardType(.numberPad)
+                    .listRowBackground(Color.gray.opacity(0.1))
 
                 HStack {
                     Button("Cancel") {
@@ -33,8 +34,11 @@ struct SettingsPINView: View {
                     }
                     .disabled(pin.isEmpty)
                 }
+                .listRowBackground(Color.gray.opacity(0.1))
                 .padding()
             }
+            .scrollContentBackground(.hidden)
+            .background(Color.theme.background)
             .navigationBarTitle(Text("Set PIN"))
         }
     }

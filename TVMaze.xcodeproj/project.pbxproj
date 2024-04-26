@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0249E77B2BB1F71800BBC79B /* TVMazeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E77A2BB1F71800BBC79B /* TVMazeApp.swift */; };
-		0249E77D2BB1F71800BBC79B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E77C2BB1F71800BBC79B /* ContentView.swift */; };
 		0249E77F2BB1F71A00BBC79B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0249E77E2BB1F71A00BBC79B /* Assets.xcassets */; };
 		0249E7822BB1F71A00BBC79B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0249E7812BB1F71A00BBC79B /* Preview Assets.xcassets */; };
 		0249E7902BB1FBEF00BBC79B /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249E78F2BB1FBEF00BBC79B /* Color+Extensions.swift */; };
@@ -76,7 +75,6 @@
 /* Begin PBXFileReference section */
 		0249E7772BB1F71800BBC79B /* TVMaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TVMaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0249E77A2BB1F71800BBC79B /* TVMazeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVMazeApp.swift; sourceTree = "<group>"; };
-		0249E77C2BB1F71800BBC79B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0249E77E2BB1F71A00BBC79B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0249E7812BB1F71A00BBC79B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0249E78F2BB1FBEF00BBC79B /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
@@ -175,7 +173,6 @@
 			isa = PBXGroup;
 			children = (
 				0249E77A2BB1F71800BBC79B /* TVMazeApp.swift */,
-				0249E77C2BB1F71800BBC79B /* ContentView.swift */,
 				024CD4482BB50D37005C90B7 /* Authentication */,
 				0249E7922BB1FCC100BBC79B /* Shared */,
 				0249E7AC2BB2158900BBC79B /* Models */,
@@ -638,7 +635,6 @@
 				0249E80F2BB3941300BBC79B /* EpisodeDetailsViewModel.swift in Sources */,
 				028B42D12BB3D421005201F7 /* String+Extensions.swift in Sources */,
 				0249E8002BB324D700BBC79B /* View+Extensions.swift in Sources */,
-				0249E77D2BB1F71800BBC79B /* ContentView.swift in Sources */,
 				0249E7AE2BB2158900BBC79B /* Image.swift in Sources */,
 				027C49222BB5DEE3006BE69B /* AuthenticationViewModel.swift in Sources */,
 				0249E7E42BB23C2D00BBC79B /* ImagesDataService.swift in Sources */,

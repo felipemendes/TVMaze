@@ -13,7 +13,10 @@ struct TvShowDetailsView: View {
     @EnvironmentObject var viewModelFactory: ViewModelFactory
 
     var body: some View {
-        VStack {
+        ZStack {
+            Color.theme.background
+                .ignoresSafeArea()
+
             switch viewModel.state {
             case .loading:
                 loadingView

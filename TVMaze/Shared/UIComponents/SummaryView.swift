@@ -23,6 +23,7 @@ struct SummaryView: View {
                     .font(.body)
                     .multilineTextAlignment(.leading)
                     .foregroundStyle(Color.theme.secondaryText)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
     }

@@ -31,6 +31,10 @@ struct EpisodeDetailsView: View {
                 }
             }
             .padding()
+            .background(
+                Color.theme.background
+                    .ignoresSafeArea()
+            )
             .navigationBarTitle("Episode Details")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {

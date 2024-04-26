@@ -17,17 +17,22 @@ struct TvShowsFavoritesView: View {
 
     var body: some View {
 
-        switch viewModel.state {
-        case .loading:
-            loadingView
-        case .content:
-            tvShowsContent
-        case let .error(errorMessage):
-            Text(errorMessage)
-                .captionStyle()
-        case let .empty(message):
-            Text(message)
-                .captionStyle()
+        ZStack {
+            Color.theme.background
+                .ignoresSafeArea()
+
+            switch viewModel.state {
+            case .loading:
+                loadingView
+            case .content:
+                tvShowsContent
+            case let .error(errorMessage):
+                Text(errorMessage)
+                    .captionStyle()
+            case let .empty(message):
+                Text(message)
+                    .captionStyle()
+            }
         }
     }
 }
@@ -36,25 +41,21 @@ struct TvShowsFavoritesView: View {
 
 extension TvShowsFavoritesView {
     private var tvShowsContent: some View {
-        ZStack {
-            Color.theme.background
-                .ignoresSafeArea()
-
-            List {
-                ForEach(viewModel.allFavorites) { tvShow in
-                    TvShowRowView(tvShow: tvShow, isFavorite: true)
-                        .listRowInsets(EdgeInsets())
-                        .onTapGesture {
-                            segue(tvShow: tvShow)
-                        }
-                        .environmentObject(viewModelFactory)
-                }
-                .listRowSeparator(.hidden)
+        List {
+            ForEach(viewModel.allFavorites) { tvShow in
+                TvShowRowView(tvShow: tvShow, isFavorite: true)
+                    .listRowInsets(EdgeInsets())
+                    .onTapGesture {
+                        segue(tvShow: tvShow)
+                    }
+                    .listRowBackground(Color.theme.background)
+                    .environmentObject(viewModelFactory)
             }
-            .listStyle(.plain)
-            .refreshable {
-                viewModel.reloadData()
-            }
+            .listRowSeparator(.hidden)
+        }
+        .listStyle(.plain)
+        .refreshable {
+            viewModel.reloadData()
         }
         .navigationTitle("Favorites")
         .background(

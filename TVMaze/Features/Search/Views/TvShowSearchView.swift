@@ -19,38 +19,43 @@ struct TvShowSearchView: View {
     var body: some View {
 
         NavigationView {
-            VStack {
-                SearchBarView(searchTerm: $viewModel.searchTerm)
+            ZStack {
+                Color.theme.background
+                    .ignoresSafeArea()
 
-                switch viewModel.state {
-                case .loading:
-                    loadingView
-                case .content:
-                    tvShowsContent
-                case let .error(errorMessage):
-                    Text(errorMessage)
-                        .captionStyle()
-                case let .empty(message):
-                    Text(message)
-                        .captionStyle()
-                }
+                VStack {
+                    SearchBarView(searchTerm: $viewModel.searchTerm)
 
-                Spacer()
-            }
-            .navigationTitle("Search TV Shows")
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    XMarkButton(dismiss: _dismiss)
-                }
-            }
-            .background(
-                NavigationLink(
-                    destination: TvShowDetailsView(viewModel: viewModelFactory.makeTvShowDetailsViewModel(tvShow: $selectedTvShow.wrappedValue?.show))
-                        .environmentObject(viewModelFactory),
-                    isActive: $tvShowDetailView) {
-                        EmptyView()
+                    switch viewModel.state {
+                    case .loading:
+                        loadingView
+                    case .content:
+                        tvShowsContent
+                    case let .error(errorMessage):
+                        Text(errorMessage)
+                            .captionStyle()
+                    case let .empty(message):
+                        Text(message)
+                            .captionStyle()
                     }
-            )
+
+                    Spacer()
+                }
+                .navigationTitle("Search TV Shows")
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        XMarkButton(dismiss: _dismiss)
+                    }
+                }
+                .background(
+                    NavigationLink(
+                        destination: TvShowDetailsView(viewModel: viewModelFactory.makeTvShowDetailsViewModel(tvShow: $selectedTvShow.wrappedValue?.show))
+                            .environmentObject(viewModelFactory),
+                        isActive: $tvShowDetailView) {
+                            EmptyView()
+                        }
+                )
+            }
         }
         .listStyle(.plain)
     }
@@ -71,6 +76,7 @@ extension TvShowSearchView {
                     }
             }
             .listRowSeparator(.hidden)
+            .listRowBackground(Color.theme.background)
         }
     }
 }

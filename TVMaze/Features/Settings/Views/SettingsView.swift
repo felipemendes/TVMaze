@@ -34,7 +34,10 @@ struct SettingsView: View {
                         .foregroundColor(.orange)
                 }
             }
+            .listRowBackground(Color.gray.opacity(0.1))
         }
+        .scrollContentBackground(.hidden)
+        .background(Color.theme.background)
         .navigationBarTitle("Settings")
         .sheet(isPresented: $showingPINModal) {
             SettingsPINView(isPresented: $showingPINModal) { newPIN in
