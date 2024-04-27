@@ -11,6 +11,7 @@ import TVMazeServiceKit
 class SettingsViewModel: ObservableObject {
     @Published var isBiometricsEnabled: Bool
     @Published var isPINSet: Bool
+    @Published var showPINAlert: Bool = false
     @Published var pinSettingError: String?
 
     private let biometricAuthManager: BiometricAuthenticationManager
@@ -35,6 +36,7 @@ class SettingsViewModel: ObservableObject {
     func setPIN(_ pin: String) {
         guard pin.count >= minimumPINDigits else {
             pinSettingError = pinSettingErrorMessage
+            showPINAlert = true
             return
         }
 
@@ -42,6 +44,7 @@ class SettingsViewModel: ObservableObject {
 
         isPINSet = true
         pinSettingError = nil
+        showPINAlert = false
 
         UserDefaults.standard.set(true, forKey: pinIsSetKey)
     }

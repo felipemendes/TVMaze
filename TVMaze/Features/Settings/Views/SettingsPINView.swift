@@ -10,15 +10,17 @@ import SwiftUI
 struct SettingsPINView: View {
     @Binding var isPresented: Bool
     @State private var pin: String = ""
+    @FocusState private var isFieldFocused: Bool
     var setPINAction: (String) -> Void
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 SecureField("Enter PIN", text: $pin)
                     .padding()
                     .keyboardType(.numberPad)
                     .listRowBackground(Color.gray.opacity(0.1))
+                    .focused($isFieldFocused)
 
                 HStack {
                     Button("Cancel") {
@@ -40,6 +42,11 @@ struct SettingsPINView: View {
             .scrollContentBackground(.hidden)
             .background(Color.theme.background)
             .navigationBarTitle(Text("Set PIN"))
+        }
+        .onAppear {
+            DispatchQueue.main.async {
+                self.isFieldFocused = true
+            }
         }
     }
 }

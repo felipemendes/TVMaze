@@ -9,10 +9,6 @@ import SwiftUI
 
 struct SettingsView: View {
     @ObservedObject var viewModel: SettingsViewModel
-    @State private var showingPINAlert = false
-    @State private var pinInput = ""
-    @State private var alertMessage = ""
-    @State private var showingAlertMessage = false
     @State private var showingPINModal = false
 
     var body: some View {
@@ -29,12 +25,28 @@ struct SettingsView: View {
                     self.showingPINModal = true
                 }
 
+                if viewModel.isPINSet {
+                    Button("Remove PIN") {
+                        viewModel.removePIN()
+                    }
+                }
+
                 if viewModel.isBiometricsEnabled && !viewModel.isPINSet {
                     Text("Biometrics enabled without PIN setup. Consider setting up a PIN as a fallback.")
                         .foregroundColor(.orange)
                 }
             }
             .listRowBackground(Color.gray.opacity(0.1))
+            .alert("Important Messsage", isPresented: $viewModel.showPINAlert) {
+                Button("Dismiss", role: .cancel) { }
+                Button("Try Again") {
+                    self.showingPINModal = true
+                }
+            } message: {
+                if let pinSettingError = viewModel.pinSettingError, !pinSettingError.isEmpty {
+                    Text(pinSettingError)
+                }
+            }
         }
         .scrollContentBackground(.hidden)
         .background(Color.theme.background)
